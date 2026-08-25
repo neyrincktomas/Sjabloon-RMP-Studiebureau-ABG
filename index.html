@@ -1113,6 +1113,38 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     </div>
                 </div>
             </div>
+            <h2>Vastgoedwaarde</h2>
+            <div class="form-group" style="display: flex; gap: 16px; margin-bottom: 15px;">
+                <div style="flex: 1;">
+                    <label for="aantal_appartementen"
+                        style="display: block; font-weight: bold; margin-bottom: 4px;">Aantal appartementen:</label>
+                    <input type="number" id="aantal_appartementen" name="aantal_appartementen" placeholder="bijv. 4"
+                        style="width: 100%; padding: 6px; box-sizing: border-box;">
+                </div>
+
+                <div style="flex: 1;">
+                    <label for="gem_opp_appartement" style="display: block; font-weight: bold; margin-bottom: 4px;">Gem.
+                        opp. per appartement:</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="text" id="gem_opp_appartement" name="gem_opp_appartement" placeholder="bijv. 85"
+                            style="width: 100%; padding: 6px; box-sizing: border-box;">
+                        <span style="margin-left: 6px; font-weight: bold;">m²</span>
+                    </div>
+                </div>
+            </div>
+            <h3>Referenties vergelijkbare panden</h3>
+            <div class="sectie"
+                style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff;">
+                <div
+                    style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                    <label for="aantal_referenties"><b>Hoeveel elementen wilt u bespreken?</b> </label>
+                    <input type="number" id="aantal_referenties" min="0" value="0"
+                        style="width: 60px; margin-left: 8px; padding: 4px;"
+                        oninput="updateElementenAantal('referenties')">
+                </div>
+                <div id="referentiesContainer"></div>
+            </div>
+
     </div>
 
 
@@ -1138,40 +1170,31 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
         });
 
         document.addEventListener("DOMContentLoaded", function () {
-
             const selectElementen = document.querySelectorAll('.status-select');
 
             selectElementen.forEach(function (select) {
-                // Maak een herbruikbare functie voor de check
                 function updateAandachtspunt() {
                     const targetId = select.getAttribute('data-target');
                     const targetGroep = document.getElementById(targetId);
 
                     if (targetGroep) {
                         if (select.value === 'rood') {
-                            targetGroep.style.display = 'flex'; // Zichtbaar bij Rood
+                            targetGroep.style.display = 'flex';
                         } else {
-                            targetGroep.style.display = 'none'; // Verberg bij Groen of Geel
+                            targetGroep.style.display = 'none';
                         }
                     }
                 }
-
-                // 1. Luister naar handmatige veranderingen
                 select.addEventListener('change', updateAandachtspunt);
-
-                // 2. Voer de check OOK direct uit bij het inladen van de pagina!
                 updateAandachtspunt();
             });
-
         });
 
         async function leesFotoVeilig(elementId) {
             const input = document.getElementById(elementId);
-
             if (!input || !input.files || input.files.length === 0) {
                 return null;
             }
-
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = (e) => resolve(e.target.result);
@@ -1199,7 +1222,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
           </div>
           <div class="veld">
             <label>Waarde:</label>
-            <textarea class="extra-waarde auto-expand" rows="4" placeholder="bijv. ijzerwerk bevestigd boven op borstweringsmuur en bevestigd in gevelsteen en raam, achtergevel valbeveiliging aan de hand van borstweringsmuur"></textarea>
+            <textarea class="extra-waarde auto-expand" rows="4" placeholder="bijv. ijzerwerk bevestigd boven op borstweringsmuur..."></textarea>
           </div>
         </div>
     `;
@@ -1213,8 +1236,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             div.style.cssText = 'display: flex; gap: 8px; margin-bottom: 6px;';
 
             div.innerHTML = `
-        <textarea class="renovatie-input auto-expand" rows="2" placeholder="bijv. Ramen vervangen in PVC (privatief, verdieping 2 nog originele houten ramen, gelijkvloers nog
-originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
+        <textarea class="renovatie-input auto-expand" rows="2" placeholder="bijv. Ramen vervangen in PVC..." style="flex: 1;"></textarea>
         <button type="button" onclick="this.parentElement.remove()" style="color: red;">X</button>
     `;
             container.appendChild(div);
@@ -1224,14 +1246,12 @@ originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
             const container = document.getElementById('ontvangenDocumentenContainer');
             const div = document.createElement('div');
             div.className = 'document-item';
-            div.style.marginBottom = '8px';
-            div.style.display = 'flex';
-            div.style.gap = '10px';
+            div.style.cssText = 'margin-bottom: 8px; display: flex; gap: 10px;';
 
             div.innerHTML = `
-            <input type="text" class="document-naam" placeholder="bijv. EPC gemeenschappelijke delen" style="flex: 1;">
-            <button type="button" onclick="this.parentElement.remove()" style="color: red;">X</button>
-        `;
+        <input type="text" class="document-naam" placeholder="bijv. EPC gemeenschappelijke delen" style="flex: 1;">
+        <button type="button" onclick="this.parentElement.remove()" style="color: red;">X</button>
+    `;
             container.appendChild(div);
         }
 
@@ -1242,19 +1262,19 @@ originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
             div.style.cssText = 'margin-bottom: 15px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;';
 
             div.innerHTML = `
-            <div style="display: flex; gap: 10px; margin-bottom: 8px;">
-              <input type="text" class="pb-datum" placeholder="Datum" style="width: 30%;">
-              <input type="text" class="pb-reden" placeholder="Reden inspectie" style="width: 60%;">
-              <button type="button" onclick="this.parentElement.parentElement.remove()" style="color: red;">X</button>
-            </div>
-            <div class="personen-container" style="margin-left: 10px;">
-              <label><b>Inspecteurs:</b></label>
-              <div class="personen-lijst">
-                <input type="text" class="pb-persoon" placeholder="Naam inspecteur" style="width: 70%; margin-bottom: 4px;">
-              </div>
-              <button type="button" onclick="voegPersoonToe(this)" style="font-size: 12px;">+ Extra inspecteur</button>
-            </div>
-        `;
+        <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+          <input type="text" class="pb-datum" placeholder="Datum" style="width: 30%;">
+          <input type="text" class="pb-reden" placeholder="Reden inspectie" style="width: 60%;">
+          <button type="button" onclick="this.parentElement.parentElement.remove()" style="color: red;">X</button>
+        </div>
+        <div class="personen-container" style="margin-left: 10px;">
+          <label><b>Inspecteurs:</b></label>
+          <div class="personen-lijst">
+            <input type="text" class="pb-persoon" placeholder="Naam inspecteur" style="width: 70%; margin-bottom: 4px;">
+          </div>
+          <button type="button" onclick="voegPersoonToe(this)" style="font-size: 12px;">+ Extra inspecteur</button>
+        </div>
+    `;
             container.appendChild(div);
         }
 
@@ -1263,9 +1283,9 @@ originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
             const div = document.createElement('div');
             div.style.cssText = 'display: flex; gap: 5px; margin-bottom: 4px;';
             div.innerHTML = `
-            <input type="text" class="pb-persoon" placeholder="Naam extra inspecteur" style="width: 70%;">
-            <button type="button" onclick="this.parentElement.remove()" style="color: red;">x</button>
-        `;
+        <input type="text" class="pb-persoon" placeholder="Naam extra inspecteur" style="width: 70%;">
+        <button type="button" onclick="this.parentElement.remove()" style="color: red;">x</button>
+    `;
             personenLijst.appendChild(div);
         }
 
@@ -1307,12 +1327,51 @@ originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
             div.className = `${sectieNaam}-item`;
             div.style.cssText = 'border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; border-radius: 5px; background: #fdfdfd;';
 
-            div.innerHTML = `
+            if (sectieNaam === 'referenties') {
+                div.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Referentie #${index}</div>
+            <div style="display: flex; gap: 8px; margin-bottom: 8px; align-items: center;">
+                <input type="text" class="ref-adres" placeholder="Adres" style="width: 50%; padding: 4px;">
+                
+                <div style="display: flex; align-items: center; width: 25%;">
+                    <span style="margin-right: 4px;">€</span>
+                    <input type="number" class="ref-vraagprijs" placeholder="Vraagprijs" style="width: 100%; padding: 4px;">
+                </div>
+                
+                <div style="display: flex; align-items: center; width: 25%;">
+                    <input type="number" class="ref-oppervlakte" placeholder="Oppervlakte" style="width: 100%; padding: 4px;">
+                    <span style="margin-left: 4px;">m²</span>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 8px;">
+                <input type="text" class="ref-prijs-per" placeholder="Prijs / m²" readonly style="flex: 1; padding: 4px; background-color: #e9ecef;">
+                <input type="text" class="ref-bouwjaar" placeholder="Bouwjaar" style="flex: 1; padding: 4px;">
+                
+                <select class="ref-epc-label" style="flex: 1; padding: 4px;">
+                    <option value="">-- EPC Label --</option>
+                    <option value="A+">A+</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                </select>
+
+                <input type="text" class="ref-epc-score" placeholder="EPC score" style="flex: 1; padding: 4px;">
+            </div>
+        `;
+
+
+            } else {
+
+                div.innerHTML = `
             <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Element #${index}</div>
             <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-              <input type="text" class="el-code" style="width: 20%; padding: 4px;">
-              <textarea class="el-bouwdeel" style="width: 40%; padding: 4px;"></textarea>
-              <textarea class="el-gebrek" style="width: 40%; padding: 4px;"></textarea>
+              <input type="text" class="el-code" style="width: 20%; padding: 4px;" placeholder="Code">
+              <textarea class="el-bouwdeel" style="width: 40%; padding: 4px;" placeholder="Bouwdeel"></textarea>
+              <textarea class="el-gebrek" style="width: 40%; padding: 4px;" placeholder="Gebrek"></textarea>
             </div>
             <div style="display: flex; gap: 8px; margin-bottom: 8px;">
               <select class="el-ernst" style="flex: 1; padding: 4px;">
@@ -1343,7 +1402,6 @@ originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
                 <option value="C4">Matig (C4)</option>
                 <option value="C5">Slecht (C5)</option>                
                 <option value="C6">Zeer slecht (C6)</option>
-                
               </select>
             </div>
             <div style="display: flex; gap: 8px; align-items: center;">
@@ -1353,13 +1411,37 @@ originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
                 <option value="Middel">Middel (2)</option>
                 <option value="Laag">Laag (3)</option>
               </select>
-
               <label style="margin-left: 10px;"><b>Foto('s):</b></label>
               <input type="file" class="el-foto" accept="image/*" multiple style="flex: 1;">
             </div>
         `;
+            }
+
             container.appendChild(div);
         }
+
+        document.addEventListener('input', function (event) {
+            if (event.target.classList.contains('ref-vraagprijs') || event.target.classList.contains('ref-oppervlakte')) {
+                const rij = event.target.closest('.referenties-item');
+                if (!rij) return;
+
+                // Haal alle punten en spaties weg om een zuiver getal te krijgen voor de berekening
+                const vraagprijsRuw = rij.querySelector('.ref-vraagprijs').value.replace(/\./g, '').replace(',', '.').trim();
+                const oppRuw = rij.querySelector('.ref-oppervlakte').value.replace(/\./g, '').replace(',', '.').trim();
+
+                const vraagprijs = parseFloat(vraagprijsRuw);
+                const oppervlakte = parseFloat(oppRuw);
+                const prijsPerM2Input = rij.querySelector('.ref-prijs-per');
+
+                if (!isNaN(vraagprijs) && !isNaN(oppervlakte) && oppervlakte > 0) {
+                    // Reken de juiste prijs per m² uit zonder decimalen (bijv. 15000)
+                    const uitkomst = Math.round(vraagprijs / oppervlakte);
+                    prijsPerM2Input.value = uitkomst;
+                } else {
+                    prijsPerM2Input.value = '';
+                }
+            }
+        });
 
         async function verwerkSjabloon() {
             const status = document.getElementById('status');
@@ -1849,6 +1931,75 @@ originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
                     return ''; // Eventueel leeg laten bij 'geel' of 'geen'
                 }
 
+                const referentiesLijst = [];
+                const rijen = document.querySelectorAll('#referentieTabel tbody tr');
+
+                rijen.forEach(rij => {
+                    const adres = rij.querySelector('.ref-adres').value || '';
+                    const prijs = parseFloat(rij.querySelector('.ref-prijs').value) || 0;
+                    const opp = parseFloat(rij.querySelector('.ref-opp').value) || 0;
+                    const prijsPerM2 = opp > 0 ? (prijs / opp).toFixed(2) : '0.00';
+
+                    // Voeg het object toe aan de array
+                    referentiesLijst.push({
+                        adres: adres,
+                        prijs: prijs,
+                        oppervlakte: opp,
+                        prijsPerM2: prijsPerM2
+                    });
+                });
+
+                function formatteerGetal(waarde) {
+                    if (!waarde) return '';
+                    // Haal eventuele oude punten of komma's op de verkeerde plek weg
+                    const schoonGetal = parseFloat(waarde.toString().replace(/\./g, '').replace(',', '.'));
+                    if (isNaN(schoonGetal)) return waarde;
+
+                    // Formatteer naar Nederlands formaat (punt voor duizendtallen)
+                    return schoonGetal.toLocaleString('nl-BE');
+                }
+
+                const referentiesItems = document.querySelectorAll('.referenties-item');
+                const referentiesElementen = [];
+                let totaalPrijsPerM2 = 0;
+                let aantalGeldigePrijzen = 0;
+
+                referentiesItems.forEach(item => {
+                    const v = item.querySelector('.ref-vraagprijs')?.value.trim();
+                    const o = item.querySelector('.ref-oppervlakte')?.value.trim();
+                    const p = item.querySelector('.ref-prijs-per')?.value.trim();
+                    const s = item.querySelector('.ref-epc-score')?.value.trim();
+
+                    // Tel mee voor het gemiddelde als de prijs/m² een geldig getal is
+                    const numeriekePrijs = parseFloat(p ? p.toString().replace(/\./g, '').replace(',', '.') : 0);
+                    if (!isNaN(numeriekePrijs) && numeriekePrijs > 0) {
+                        totaalPrijsPerM2 += numeriekePrijs;
+                        aantalGeldigePrijzen++;
+                    }
+
+                    referentiesElementen.push({
+                        adres: item.querySelector('.ref-adres')?.value || '',
+                        vraagprijs: v ? `€ ${formatteerGetal(v)}` : '',
+                        oppervlakte: o ? `${formatteerGetal(o)} m²` : '',
+                        prijs_per: p ? `€ ${formatteerGetal(p)} / m²` : '',
+                        bouwjaar: item.querySelector('.ref-bouwjaar')?.value || '',
+                        EPC_label: item.querySelector('.ref-epc-label')?.value || '',
+                        EPC_score: s ? `${formatteerGetal(s)} kWh/m²` : ''
+                    });
+                });
+
+                /// Bereken het gemiddelde
+                const gemiddelde = aantalGeldigePrijzen > 0 ? Math.round(totaalPrijsPerM2 / aantalGeldigePrijzen) : 0;
+                const gemMarktwaardeTekst = gemiddelde > 0 ? `€ ${formatteerGetal(gemiddelde)} / m²` : '';
+                // 1. Maak de datastructuur aan die EXACT matcht met jouw Word-tabel ({#referenties})
+                const referentiesData = {
+                    tonen: referentiesElementen.length > 0,
+                    elementen: referentiesElementen,
+                    gem_marktwaarde: gemMarktwaardeTekst
+                };
+
+
+
 
                 const data = {
                     fotohoofd: fotoHoofdBuffer,
@@ -2091,33 +2242,36 @@ originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
                     icoon_reno_2028: getIcoon('statusReno2028'),
                     icoon_reno_2040: getIcoon('statusReno2040'),
                     icoon_reno_2045: getIcoon('statusReno2045'),
-                };
 
+                    aantal_appartementen: document.getElementById('aantal_appartementen')?.value.trim() || '',
+                    gem_opp_appartement: document.getElementById('gem_opp_appartement')?.value.trim()
+                        ? `${formatteerGetal(document.getElementById('gem_opp_appartement').value.trim())} m²`
+                        : '',
+
+                    // Koppel de array direct aan 'referenties' (zoals in je Word-tabel {#referenties}):
+                    referenties: referentiesElementen,
+
+                    gem_marktwaarde: gemMarktwaardeTekst,
+                };
                 doc.render(data);
 
-                const output = doc.getZip().generate({
+                const out = doc.getZip().generate({
                     type: 'blob',
                     mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                 });
 
-                const bestandsNaam = `Rapport_${residentieNaam.replace(/[^a-zA-Z0-9]/g, '_')}.docx`;
-                saveAs(output, bestandsNaam);
-
+                saveAs(out, `Rapport_${residentieNaam}.docx`);
+                status.innerText = 'Document succesvol gegenereerd!';
                 status.style.color = 'green';
-                status.innerText = 'Succesvol ingevuld en gedownload!';
 
             } catch (error) {
                 console.error(error);
+                status.innerText = 'Er is een fout opgetreden: ' + error.message;
                 status.style.color = 'red';
-
-                if (error.properties && error.properties.errors) {
-                    const foutLijst = error.properties.errors.map(e => `- ${e.properties.explanation || e.message}`).join('<br>');
-                    status.innerHTML = `<b>Fout bij verwerken (Multi error):</b><br>${foutLijst}`;
-                } else {
-                    status.innerText = 'Fout bij verwerken: ' + error.message;
-                }
             }
         }
+
+
     </script>
 
 </body>
