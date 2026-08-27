@@ -1413,7 +1413,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 const rij = event.target.closest('.referenties-item');
                 if (!rij) return;
 
-                // Haal alle punten en spaties weg om een zuiver getal te krijgen voor de berekening
                 const vraagprijsRuw = rij.querySelector('.ref-vraagprijs').value.replace(/\./g, '').replace(',', '.').trim();
                 const oppRuw = rij.querySelector('.ref-oppervlakte').value.replace(/\./g, '').replace(',', '.').trim();
 
@@ -1808,7 +1807,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 if (statusVerwarming === 'rood') {
                     verwarmingIcoon = "❌";
 
-                    // Alleen als er écht een aandachtspunt is ingevuld
                     if (eigenAandachtspuntVerwarming.trim() !== "") {
                         aandachtspuntTeller++;
                         verwarmingAandachtspuntTitel = `Aandachtspunt ${aandachtspuntTeller}: `;
@@ -1866,7 +1864,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 if (statusVerlichting === 'rood') {
                     verlichtingIcoon = "❌";
 
-                    // Alleen als er écht een aandachtspunt is ingevuld
                     if (eigenAandachtspuntVerlichting.trim() !== "") {
                         aandachtspuntTeller++;
                         verlichtingAandachtspuntTitel = `Aandachtspunt ${aandachtspuntTeller}: `;
@@ -1916,20 +1913,18 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     } else if (val === 'rood' || val === 'voldoet_niet' || val === 'slecht') {
                         return '❌';
                     }
-                    return ''; // Eventueel leeg laten bij 'geel' of 'geen'
+                    return ''; 
                 }
 
                 function formatteerGetal(waarde) {
                     if (waarde === null || waarde === undefined || waarde === '') return '';
 
-                    // Als het al een string met tekst is, haal eventuele al aanwezige opmaak op
                     const nummer = typeof waarde === 'number'
                         ? waarde
                         : parseFloat(waarde.toString().replace(/\./g, '').replace(',', '.'));
 
                     if (isNaN(nummer)) return waarde;
 
-                    // Formatteer naar Nederlands/Belgisch getalsformaat (bijv. 375194 -> 375.194)
                     return nummer.toLocaleString('nl-BE');
                 }
 
@@ -1955,11 +1950,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     const p = item.querySelector('.ref-prijs-per')?.value.trim();
                     const s = item.querySelector('.ref-epc-score')?.value.trim();
 
-                    // Zet vraagprijs en oppervlakte om voor de berekening
                     const vNum = parseFloat(v ? v.replace(/\./g, '').replace(',', '.') : 0);
                     const oNum = parseFloat(o ? o.replace(/\./g, '').replace(',', '.') : 0);
-
-                    // Zet de EPC-score om naar een zuiver getal voor het label
                     const sNum = parseFloat(s ? s.replace(/\./g, '').replace(',', '.') : NaN);
 
                     if (vNum > 0 && oNum > 0) {
@@ -2263,11 +2255,10 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     referenties: referentiesElementen,
                     gem_marktwaarde: gemMarktwaardeTekst,
 
-                    // ZORG DAT AL DEZE TAGS ERIN STAAN:
-                    tot_per_appartement: tot_per_appartement,             // € 375.194
-                    per_appartement_afgerond: per_appartement_afgerond, // € 375.000
-                    tot_vastgoedwaarde: tot_vastgoedwaarde,               // € 3.751.942
-                    vastgoedwaarde_afgerond: vastgoedwaarde_afgerond,     // € 3.750.000
+                    tot_per_appartement: tot_per_appartement,             
+                    per_appartement_afgerond: per_appartement_afgerond, 
+                    tot_vastgoedwaarde: tot_vastgoedwaarde,              
+                    vastgoedwaarde_afgerond: vastgoedwaarde_afgerond,  
                     afgerond_miljoen: afgerond_miljoen
                 };
                 doc.render(data);
