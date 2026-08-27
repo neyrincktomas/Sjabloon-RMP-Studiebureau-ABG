@@ -53,7 +53,7 @@
                         id="datumverslag"></div>
                 <div class="veld"><label for="opdrachtgever">Opdrachtgever:</label><input type="text" id="opdrachtgever"
                         placeholder="bijv. VME Residentie Bolzano"></div>
-                <div class="veld"><label for="syndicus">Syndicus:</label><textarea id="syndicus"
+                <div class="veld"><label for="syndicus">Syndicus:</label><textarea id="syndicus" class="auto-expand"
                         placeholder="bijv. Agence Mar'immo - Leopold II-laan 2, 8400 Oostende vertegenwoordigd door Dhr. Geoffrey Opstaele"></textarea>
                 </div>
                 <div class="veld"><label for="dossiernummer">Dossiernummer:</label><input type="text" id="dossiernummer"
@@ -72,38 +72,38 @@
             <h2>Algemene Kenmerken</h2>
             <div class="grid">
                 <div class="veld span-2"><label for="bouwlagen">Informatie over de bouwlagen:</label>
-                    <textarea id="bouwlagen" class="auto-expand" placeholder="bijv. 9 bovengrondse bouwlagen (gelijkvloers + 7 typeverdiepingen + dakverdieping met dakterras) + 1
-ondergrondse bouwlaag (kelder)"></textarea>
+                    <textarea id="bouwlagen" class="auto-expand" rows="1"
+                        placeholder="bijv. 9 bovengrondse bouwlagen (gelijkvloers + 7 typeverdiepingen + dakverdieping met dakterras) + 1 ondergrondse bouwlaag (kelder)"></textarea>
                 </div>
                 <div class="veld span-2"><label for="appartement_per_verdiep">Aantal appartementen per
-                        verdiep:</label><textarea id="appartement_per_verdiep" class="auto-expand"
+                        verdiep:</label><textarea id="appartement_per_verdiep" class="auto-expand" rows="1"
                         placeholder="bijv. 1 appartementen per verdieping, gelijkvloers handelsruimte met appartement (totaal 10 entiteiten)"></textarea>
                 </div>
                 <div class="veld span-2"><label for="hoofdafmetingen">Hoofdafmetingen gebouw:</label><textarea
-                        id="hoofdafmetingen" class="auto-expand"
+                        id="hoofdafmetingen" class="auto-expand" rows="1"
                         placeholder="bijv. 7,58 m gevelbreedte, 13,00 m gebouwdiepte, hoogte tot hoofddak is 25,75 m"></textarea>
                 </div>
                 <div class="veld span-2"><label for="hoogte_bovenste_vloerplaat">Hoogte bovenste
-                        vloerplaat:</label><textarea id="hoogte_bovenste_vloerplaat" class="auto-expand" placeholder="bijv. ca. 22,85 m (categorie: middelhoog gebouw – van belang in kader van
-brandpreventie)"></textarea>
+                        vloerplaat:</label><textarea id="hoogte_bovenste_vloerplaat" class="auto-expand" rows="1"
+                        placeholder="bijv. ca. 22,85 m (categorie: middelhoog gebouw – van belang in kader van brandpreventie)"></textarea>
                 </div>
                 <div class="veld span-2"><label for="draagstructuur">Dragende structuur gebouw:</label><textarea
-                        id="draagstructuur" class="auto-expand" placeholder="bijv. skelet in gewapend beton"></textarea>
+                        id="draagstructuur" rows="1" class="auto-expand"
+                        placeholder="bijv. skelet in gewapend beton"></textarea>
                 </div>
                 <div class="veld span-2"><label for="gevelafwerking">Gevelafwerking:</label><textarea
-                        id="gevelafwerking" class="auto-expand" placeholder="bijv. voorgevel witte gevelstenen (zijstroken), geprefabriceerde sierpanelen in beton (erkers),
-dorpels in blauwe hardsteen, gelijkvloers natuursteen (Labrador), achtergevel gecementeerd metselwerk"></textarea>
+                        id="gevelafwerking" class="auto-expand"
+                        placeholder="bijv. voorgevel witte gevelstenen (zijstroken), geprefabriceerde sierpanelen in beton (erkers), dorpels in blauwe hardsteen, gelijkvloers natuursteen (Labrador), achtergevel gecementeerd metselwerk"></textarea>
                 </div>
             </div>
 
-            <!-- Dynamisch gedeelte voor extra kenmerken -->
             <div id="extraKenmerkenContainer"></div>
             <button type="button" class="btn-add" onclick="voegExtraKenmerkToe()">+ Extra Kenmerk Toevoegen</button>
 
             <h2>Situatieschets</h2>
             <div class="grid">
                 <div class="veld span-2"><label for="bouwjaar">Bouwjaar:</label><textarea id="bouwjaar"
-                        class="auto-expand"
+                        class="auto-expand" rows="1"
                         placeholder="bijv. Bouwplannen dateren van 25/05/1964 – leeftijd gebouw op datum onderzoek 60 jaar"></textarea>
                 </div>
                 <div class="veld span-2">
@@ -113,11 +113,11 @@ dorpels in blauwe hardsteen, gelijkvloers natuursteen (Labrador), achtergevel ge
                         toevoegen</button>
                 </div>
                 <div class="veld span-2"><label for="plannen_historiek">Plannen/historiek:</label><textarea
-                        id="plannen_historiek" class="auto-expand" placeholder="bijv. Originele plannen (gevelaanzichten, doorsnede en grondplannen) digitaal ontvangen
-Architect gebouw: P. Lippens (Oostende)"></textarea>
+                        id="plannen_historiek" class="auto-expand" rows="1"
+                        placeholder="bijv. Originele plannen (gevelaanzichten, doorsnede en grondplannen) digitaal ontvangen Architect gebouw: P. Lippens (Oostende)"></textarea>
                 </div>
                 <div class="veld span-2"><label for="kadastraleinfo">Kadastrale info:</label><textarea
-                        id="kadastraleinfo" class="auto-expand"
+                        id="kadastraleinfo" class="auto-expand" rows="1"
                         placeholder="bijv. 1e Afdeling, Sectie A, Perceel 1650/00B004"></textarea>
                 </div>
             </div>
@@ -716,7 +716,7 @@ Openstaande opmerkingen worden best opgenomen in het instandhoudingsscenario, zo
             </div>
             <div class="input-groep">
                 <label for="tekstSanitair">Beschrijving:</label>
-                <textarea id="tekstSanitair" class="auto-expand" rows="3"
+                <textarea id="tekstSanitair" class="auto-expand" rows="2"
                     placeholder="Bijv. Er is geen collectieve installatie voor sanitair warm water aanwezig. De productie van sanitair warm water gebeurt privatief. Bij toekomstige energetische renovatie dient te worden bekeken of individuele of collectieve duurzame oplossingen wenselijk en haalbaar zijn."></textarea>
             </div>
 
@@ -761,12 +761,12 @@ Openstaande opmerkingen worden best opgenomen in het instandhoudingsscenario, zo
             </div>
             <div class="input-groep">
                 <label for="tekstVerlichting">Beschrijving:</label>
-                <textarea id="tekstVerlichting" class="auto-expand" rows="3"
+                <textarea id="tekstVerlichting" class="auto-expand" rows="2"
                     placeholder="Bijv. De gemeenschappelijke verlichting bestaat niet integraal uit LED-verlichting. Hierdoor is er nog een eenvoudig realiseerbaar besparingspotentieel aanwezig."></textarea>
             </div>
             <div class="input-groep" id="aandachtspuntGroep_Verlichting">
                 <label for="aandachtspuntVerlichting">Aandachtspunt tekst:</label>
-                <textarea id="aandachtspuntVerlichting" class="auto-expand" rows="2"
+                <textarea id="aandachtspuntVerlichting" class="auto-expand" rows="1"
                     placeholder="Bijv. vervanging door energiezuinige LED-verlichting, bij voorkeur gecombineerd met aanwezigheidsdetectie of tijdssturing, wordt aanbevolen."></textarea>
             </div>
 
@@ -780,7 +780,7 @@ Openstaande opmerkingen worden best opgenomen in het instandhoudingsscenario, zo
             </div>
             <div class="input-groep">
                 <label for="tekstZonneEnergie">Beschrijving:</label>
-                <textarea id="tekstZonneEnergie" class="auto-expand" rows="3"
+                <textarea id="tekstZonneEnergie" class="auto-expand" rows="1"
                     placeholder="Bijv. Er zijn geen zonnepanelen of zonneboiler aanwezig. Het gebouw benut momenteel dus geen lokale hernieuwbare energieproductie."></textarea>
             </div>
             <div class="input-groep" id="aandachtspuntGroep_ZonneEnergie">
@@ -1311,18 +1311,18 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             itemDiv.className = 'extra-kenmerk-item';
 
             itemDiv.innerHTML = `
-        <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Verwijderen</button>
-        <div class="grid" style="margin-top: 10px;">
-          <div class="veld">
-            <label>Naam extra kenmerk:</label>
-            <textarea class="extra-titel auto-expand" placeholder="bijv. Balustrade voorgevel"></textarea>
-          </div>
-          <div class="veld">
-            <label>Waarde:</label>
-            <textarea class="extra-waarde auto-expand" rows="4" placeholder="bijv. ijzerwerk bevestigd boven op borstweringsmuur..."></textarea>
-          </div>
-        </div>
-    `;
+                <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Verwijderen</button>
+                <div class="grid" style="margin-top: 10px;">
+                <div class="veld">
+                    <label>Naam extra kenmerk:</label>
+                    <textarea class="auto-expand" rows="1" placeholder="bijv. Balustrade voorgevel"></textarea>
+                </div>
+                <div class="veld">
+                    <label>Waarde:</label>
+                    <textarea class="auto-expand" rows="3" placeholder="bijv.  ijzerwerk bevestigd boven op borstweringsmuur en bevestigd in gevelsteen en raam, achtergevel valbeveiliging aan de hand van borstweringsmuur"></textarea>
+                </div>
+                </div>
+            `;
             container.appendChild(itemDiv);
         }
 
@@ -1333,9 +1333,9 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             div.style.cssText = 'display: flex; gap: 8px; margin-bottom: 6px;';
 
             div.innerHTML = `
-        <textarea class="renovatie-input auto-expand" rows="2" placeholder="bijv. Ramen vervangen in PVC..." style="flex: 1;"></textarea>
-        <button type="button" onclick="this.parentElement.remove()" style="color: red;">X</button>
-    `;
+                <textarea class="renovatie-input auto-expand" rows="1" placeholder="bijv. Ramen vervangen in PVC (privatief, verdieping 2 nog originele houten ramen, gelijkvloers nog originele ramen in geanodiseerd aluminium)" style="flex: 1;"></textarea>
+                <button type="button" onclick="this.parentElement.remove()" style="color: red;">X</button>
+            `;
             container.appendChild(div);
         }
 
@@ -1359,19 +1359,19 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             div.style.cssText = 'margin-bottom: 15px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;';
 
             div.innerHTML = `
-        <div style="display: flex; gap: 10px; margin-bottom: 8px;">
-          <input type="text" class="pb-datum" placeholder="Datum" style="width: 30%;">
-          <input type="text" class="pb-reden" placeholder="Reden inspectie" style="width: 60%;">
-          <button type="button" onclick="this.parentElement.parentElement.remove()" style="color: red;">X</button>
-        </div>
-        <div class="personen-container" style="margin-left: 10px;">
-          <label><b>Inspecteurs:</b></label>
-          <div class="personen-lijst">
-            <input type="text" class="pb-persoon" placeholder="Naam inspecteur" style="width: 70%; margin-bottom: 4px;">
-          </div>
-          <button type="button" onclick="voegPersoonToe(this)" style="font-size: 12px;">+ Extra inspecteur</button>
-        </div>
-    `;
+                <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+                <input type="text" class="pb-datum" placeholder="Datum" style="width: 30%;">
+                <input type="text" class="pb-reden" placeholder="Reden inspectie" style="width: 60%;">
+                <button type="button" onclick="this.parentElement.parentElement.remove()" style="color: red;">X</button>
+                </div>
+                <div class="personen-container" style="margin-left: 10px;">
+                <label><b>Inspecteurs:</b></label>
+                <div class="personen-lijst">
+                    <input type="text" class="pb-persoon" placeholder="Naam inspecteur" style="width: 70%; margin-bottom: 4px;">
+                </div>
+                <button type="button" onclick="voegPersoonToe(this)" style="font-size: 12px;">+ Extra inspecteur</button>
+                </div>
+            `;
             container.appendChild(div);
         }
 
@@ -1380,9 +1380,9 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             const div = document.createElement('div');
             div.style.cssText = 'display: flex; gap: 5px; margin-bottom: 4px;';
             div.innerHTML = `
-        <input type="text" class="pb-persoon" placeholder="Naam extra inspecteur" style="width: 70%;">
-        <button type="button" onclick="this.parentElement.remove()" style="color: red;">x</button>
-    `;
+                <input type="text" class="pb-persoon" placeholder="Naam extra inspecteur" style="width: 70%;">
+                <button type="button" onclick="this.parentElement.remove()" style="color: red;">x</button>
+            `;
             personenLijst.appendChild(div);
         }
 
@@ -1511,8 +1511,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Element #${index}</div>
                     <div style="display: flex; gap: 8px; margin-bottom: 8px;">
                         <input type="text" class="el-code" style="width: 20%; padding: 4px;" placeholder="Code">
-                        <textarea class="el-bouwdeel" style="width: 40%; padding: 4px;" placeholder="Bouwdeel"></textarea>
-                        <textarea class="el-gebrek" style="width: 40%; padding: 4px;" placeholder="Gebrek"></textarea>
+                        <textarea class="el-bouwdeel auto-expand" style="width: 40%; padding: 4px;" placeholder="Bouwdeel"></textarea>
+                        <textarea class="el-gebrek auto-expand" style="width: 40%; padding: 4px;" placeholder="Gebrek"></textarea>
                     </div>
                     <div style="display: flex; gap: 8px; margin-bottom: 8px;">
                     <select class="el-ernst" style="flex: 1; padding: 4px;">
