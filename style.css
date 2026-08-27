@@ -76,6 +76,22 @@ select {
     font-family: inherit;
 }
 
+.btn-submit {
+    padding: 12px 20px;
+    background: rgb(155, 187, 89);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-submit:hover {
+    background: rgb(135, 165, 75);
+}
+
 .btn-add {
     background: rgb(155, 187, 89);
     color: white;
