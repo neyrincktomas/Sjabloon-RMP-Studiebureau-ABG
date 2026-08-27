@@ -76,22 +76,6 @@ select {
     font-family: inherit;
 }
 
-.btn-submit {
-    padding: 12px 20px;
-    background: rgb(155, 187, 89);
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: bold;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.btn-submit:hover {
-    background: rgb(135, 165, 75);
-}
-
 .btn-add {
     background: rgb(155, 187, 89);
     color: white;
@@ -122,22 +106,6 @@ select {
     background: #c9302c;
 }
 
-.extra-kenmerk-item {
-    background: #fdfdfd;
-    padding: 12px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    border: 1px solid #e0e0e0;
-    border-left: 3px solid rgb(155, 187, 89);
-}
-
-#status {
-    margin-top: 15px;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
 textarea.auto-expand {
     width: 100%;
     resize: none;
@@ -145,16 +113,6 @@ textarea.auto-expand {
     box-sizing: border-box;
     min-height: 38px;
     line-height: 1.4;
-}
-
-.extra-waarde {
-    min-height: 75px;
-    box-sizing: border-box;
-}
-
-.sectie-inhoud {
-    margin-left: 20px;
-    width: calc(100% - 20px);
 }
 
 .header-container {
@@ -172,39 +130,6 @@ textarea.auto-expand {
     max-width: 160px;
     height: auto;
     display: block;
-}
-
-.status-icoon {
-    font-size: 1.2rem;
-    min-width: 25px;
-}
-
-.status-icoon.goed::after {
-    content: "✅";
-}
-
-.status-icoon.fout::after {
-    content: "❌";
-}
-
-.status-icoon.waarschuwing::after {
-    content: "⚠️";
-}
-
-.sectie-container {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.sectie-titel {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.3rem;
-    color: #333;
 }
 
 .input-groep {
@@ -269,10 +194,6 @@ textarea.auto-expand {
     color: #b71c1c;
 }
 
-.input-groep.verborgen {
-    display: none !important;
-}
-
 h4 {
     margin-top: 15px;
     margin-bottom: 8px;
@@ -282,23 +203,9 @@ h4 {
     padding-bottom: 4px;
 }
 
-.rij-naast-elkaar {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.rij-naast-elkaar .input-groep {
-    flex: 1;
-    margin-bottom: 0;
-}
 
 label.no-wrap {
     white-space: nowrap;
-}
-
-input.korte-input {
-    max-width: 150px;
 }
 
 .tabel-sectie {
@@ -317,6 +224,7 @@ input.korte-input {
     border-bottom: 1px solid #f0f0f0;
     gap: 20px;
 }
+
 .input-groep-tabel:last-child {
     border-bottom: none;
 }
