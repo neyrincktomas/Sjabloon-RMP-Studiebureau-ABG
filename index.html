@@ -235,8 +235,23 @@ Architect gebouw: P. Lippens (Oostende)"></textarea>
                 <div class="veld span-2"><label for="conclusieconditiestaatbouwkunde">Uitgeschreven conclusie
                         conditiestaat
                         gedeelte bouwkunde:</label><textarea id="conclusieconditiestaatbouwkunde" class="auto-expand"
-                        rows="3"></textarea>
+                        rows="8"
+                        placeholder="Bijv. Algemeen kan worden gesteld dat het gebouw zich globaal in een redelijke tot goede staat bevindt en dat er op basis van de visuele inspectie geen aanwijzingen zijn voor algemene of grootschalige structurele gebreken. De vastgestelde slijtage aan diverse gebouwonderdelen is in belangrijke mate te relateren aan de ouderdom van het gebouw en aan de normale technische levensduur van de toegepaste materialen en afwerkingen.
+
+Wel werden ter hoogte van de balkons duidelijke tekenen van beginnende tot plaatselijke wapeningscorrosie vastgesteld, evenals sporen die wijzen op een gebrekkige waterdichting van de balkonvloeren en aansluitingen. Daarnaast vertoont ook de gevel tekenen van veroudering, waardoor de oorspronkelijke waterwerende functie plaatselijk verminderd is. Hierdoor kunnen bij slagregen of aanhoudende vochtbelasting infiltraties optreden, met risico op verdere aantasting van de achterliggende structuur, afwerkingen en aansluitdetails."></textarea>
                 </div>
+            </div>
+
+            <div class="sectie"
+                style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff;">
+                <div
+                    style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                    <label for="aantal_gebrekenb"><b>Hoeveel gebreken wilt u in de samenvatting zetten?</b> </label>
+                    <input type="number" id="aantal_gebrekenb" min="0" value="0"
+                        style="width: 60px; margin-left: 8px; padding: 4px;"
+                        oninput="updateElementenAantal('gebrekenb')">
+                </div>
+                <div id="gebrekenbContainer"></div>
             </div>
 
             <h2>Conditiestaat gedeelte technieken </h2>
@@ -390,6 +405,17 @@ Architect gebouw: P. Lippens (Oostende)"></textarea>
                     gedeelte technieken:</label><textarea id="conclusieconditiestaattechnieken" class="auto-expand"
                     rows="3"></textarea>
             </div>
+            <div class="sectie"
+                style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff;">
+                <div
+                    style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                    <label for="aantal_gebrekent"><b>Hoeveel gebreken wilt u in de samenvatting zetten?</b> </label>
+                    <input type="number" id="aantal_gebrekent" min="0" value="0"
+                        style="width: 60px; margin-left: 8px; padding: 4px;"
+                        oninput="updateElementenAantal('gebrekent')">
+                </div>
+                <div id="gebrekentContainer"></div>
+            </div>
 
             <h2>Conditiestaat gedeelte veiligheid en woonkwaliteit </h2>
 
@@ -397,44 +423,53 @@ Architect gebouw: P. Lippens (Oostende)"></textarea>
             <div class="veld">
                 <div class="veld span-2"><label for="vastgesteldesituatieborstweringen">Vastgestelde situatie
                         borstweringen:</label><textarea id="vastgesteldesituatieborstweringen" class="auto-expand"
-                        rows="3"></textarea>
+                        rows="5"
+                        placeholder="Bijv. De hoogte van de bestaande balustrades werd op verschillende balkons opgemeten en varieert plaatselijk tussen circa 90 cm en 120 cm. De balustrades zijn opgebouwd uit verticale spijlen tussen horizontale liggers. Op basis van de vaststellingen voldoen niet alle balustrades aan de huidige voorschriften inzake minimale hoogte, openingen, gebruiksveiligheid en/of detaillering. Daarnaast werd vastgesteld dat de bevestiging van bepaalde balustrades plaatselijk gebrekkig, onvoldoende duurzaam of onzorgvuldig werd uitgevoerd. Dit vormt een bijkomend aandachtspunt op het vlak van gebruiksveiligheid en valpreventie."></textarea>
                 </div>
                 <div class="veld"><label for="conclusieborstweringen">Conclusie en aanbeveling
-                        borstweringen:</label><textarea id="conclusieborstweringen" class="auto-expand"
-                        rows="3"></textarea></div>
+                        borstweringen:</label><textarea id="conclusieborstweringen" class="auto-expand" rows="4"
+                        placeholder="Bijv. Bij een toekomstige gevel- en balkonrenovatie dienen de niet-conforme balustrades te worden vervangen of aangepast zodat zij voldoen aan de actuele regelgeving en technische voorschriften. Daarbij moet niet alleen de hoogte worden gecorrigeerd, maar dient ook de volledige opbouw, verankering, stabiliteit, corrosiebescherming en detaillering van de borstweringen opnieuw te worden beoordeeld. De gebrekkige bevestigingen dienen prioritair te worden aangepakt, aangezien deze rechtstreeks verband houden met de veiligheid van de gebruikers."></textarea>
+                </div>
             </div>
 
             <h3>Doorvalbeveiliging ter hoogte van lage ramen</h3>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatiedoorvalbeveiliging">Vastgestelde situatie
                         doorvalbeveiliging:</label><textarea id="vastgesteldesituatiedoorvalbeveiliging"
-                        class="auto-expand" rows="3"></textarea>
+                        class="auto-expand" rows="3"
+                        placeholder="Bijv. Tijdens de visuele inspectie werd vastgesteld dat ter hoogte van bepaalde lage ramen geen afzonderlijke doorvalbeveiliging aanwezig is. De bestaande raamopeningen beschikken plaatselijk over een beperkte borstweringshoogte, waardoor bij openen of bij belasting van het raamvlak een verhoogd valrisico kan ontstaan."></textarea>
                 </div>
                 <div class="veld"><label for="conclusiedoorvalbeveiliging">Conclusie en aanbeveling
                         doorvalbeveiliging:</label><textarea id="conclusiedoorvalbeveiliging" class="auto-expand"
-                        rows="3"></textarea></div>
+                        rows="4"
+                        placeholder="Bijv. De afwezigheid van doorvalbeveiliging ter hoogte van lage ramen vormt een aandachtspunt op het vlak van gebruiksveiligheid. In het kader van een toekomstige renovatie dienen deze raamzones verder te worden beoordeeld en, waar nodig, te worden uitgerust met een conforme doorvalbeveiliging. Hierbij moet worden nagegaan of de bestaande beglazing, raamindeling en borstweringshoogte volstaan, dan wel of bijkomende maatregelen zoals veiligheidsglas, vaste raamonderdelen of balustrades noodzakelijk zijn."></textarea>
+                </div>
             </div>
 
             <h3>Valbeveiliging op platte daken</h3>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatievalbeveiliging">Vastgestelde situatie
                         valbeveiliging:</label><textarea id="vastgesteldesituatievalbeveiliging" class="auto-expand"
-                        rows="3"></textarea>
+                        rows="2"
+                        placeholder="Bijv. Tijdens de visuele inspectie werd vastgesteld dat er op de platte daken geen permanente collectieve of individuele valbeveiliging aanwezig is. Er werden geen dakrandbeveiligingen, conforme borstweringen, levenslijnen of duidelijk herkenbare ankerpunten vastgesteld."></textarea>
                 </div>
                 <div class="veld"><label for="conclusievalbeveiliging">Conclusie en aanbeveling
-                        valbeveiliging:</label><textarea id="conclusievalbeveiliging" class="auto-expand"
-                        rows="3"></textarea></div>
+                        valbeveiliging:</label><textarea id="conclusievalbeveiliging" class="auto-expand" rows="5"
+                        placeholder="Bijv. De afwezigheid van valbeveiliging vormt een belangrijk aandachtspunt voor de veiligheid van onderhouds- en inspectiepersoneel. Bij toekomstige dakwerken, technische interventies of renovaties dient een conforme valbeveiligingsoplossing te worden voorzien. Hierbij moet worden onderzocht of collectieve dakrandbeveiliging mogelijk is, dan wel of een systeem met conforme ankerpunten en/of levenslijnen moet worden uitgewerkt. De gekozen oplossing dient afgestemd te worden op de dakconfiguratie, de bereikbaarheid van technische installaties en de zones waar periodiek onderhoud noodzakelijk is."></textarea>
+                </div>
             </div>
 
             <h3>Aanwezigheid van levenslijnen en ankerpunten</h3>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatielevenslijnen">Vastgestelde situatie
                         levenslijnen en ankerpunten:</label><textarea id="vastgesteldesituatielevenslijnen"
-                        class="auto-expand" rows="3"></textarea>
+                        class="auto-expand" rows="2"
+                        placeholder="Bijv. Tijdens de visuele inspectie werden geen permanente ankerpunten, levenslijnen of andere voorzieningen voor individuele valbeveiliging vastgesteld op de platte daken."></textarea>
                 </div>
                 <div class="veld"><label for="conclusielevenslijnen">Conclusie en aanbeveling
                         levenslijnen en ankerpunten:</label><textarea id="conclusielevenslijnen" class="auto-expand"
-                        rows="3"></textarea>
+                        rows="4"
+                        placeholder="Bijv. De afwezigheid van ankerpunten en levenslijnen vormt een aandachtspunt voor de veilige uitvoering van onderhouds-, inspectie- en herstellingswerken op de daken. Bij toekomstige dakwerken of technische interventies dient een aangepast valbeveiligingsconcept te worden uitgewerkt. Daarbij moet worden nagegaan of collectieve valbeveiliging mogelijk is, dan wel of een systeem met conforme ankerpunten en/of levenslijnen noodzakelijk is. De gekozen oplossing dient afgestemd te worden op de dakopbouw, de draagstructuur, de onderhoudszones en de bereikbaarheid van technische installaties."></textarea>
                 </div>
             </div>
 
@@ -442,11 +477,13 @@ Architect gebouw: P. Lippens (Oostende)"></textarea>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatieveiligheidsbeglazing">Vastgestelde situatie
                         veiligheidsbeglazing:</label><textarea id="vastgesteldesituatieveiligheidsbeglazing"
-                        class="auto-expand" rows="3"></textarea>
+                        class="auto-expand" rows="2"
+                        placeholder="Bijv. Op basis van de visuele inspectie werden geen duidelijke gebreken of tekortkomingen vastgesteld met betrekking tot de aanwezige beglazing. Er zijn op heden geen specifieke opmerkingen geformuleerd inzake veiligheidsbeglazing."></textarea>
                 </div>
                 <div class="veld"><label for="conclusieveiligheidsbeglazing">Conclusie en aanbeveling
                         veiligheidsbeglazing:</label><textarea id="conclusieveiligheidsbeglazing" class="auto-expand"
-                        rows="3"></textarea>
+                        rows="3"
+                        placeholder="Bijv. Er worden momenteel geen onmiddellijke maatregelen noodzakelijk geacht. Bij toekomstige vervanging van ramen of beglazing dient wel systematisch te worden nagegaan of de nieuwe beglazing voldoet aan de toepasselijke eisen van NBN S 23-002 en NBN S 23-002/A1:2010, in het bijzonder ter hoogte van lage ramen, doorgangen, borstweringen en zones met mogelijk val- of impactrisico."></textarea>
                 </div>
             </div>
 
@@ -454,32 +491,42 @@ Architect gebouw: P. Lippens (Oostende)"></textarea>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatiebrandveiligheid">Vastgestelde situatie
                         en beoordeling brandveiligheid:</label><textarea id="vastgesteldesituatiebrandveiligheid"
-                        class="auto-expand" rows="3"></textarea>
+                        class="auto-expand" rows="6"
+                        placeholder="Bijv. De quickscan brandveiligheid heeft tot doel de belangrijkste aandachtspunten inzake brandveiligheid op gebouwniveau in kaart te brengen. Daarbij wordt nagegaan in welke mate het gebouw beschikt over voldoende veilige vluchtmogelijkheden, brandwerende scheidingen, technische voorzieningen, signalisatie, verlichting, rookafvoer en andere maatregelen die bijdragen tot een veilige evacuatie en een beperking van brand- en rookverspreiding.
+                        
+Bijzondere aandacht gaat daarbij uit naar de bestaande vluchtwegen, de bereikbaarheid van de gemeenschappelijke delen, de brandveiligheid van technische lokalen en kokers, de eventuele aanwezigheid van brand- of evacuatieladders en de algemene evacuatiemogelijkheden van de bewoners."></textarea>
                 </div>
                 <div class="veld"><label for="conclusiebrandveiligheid">Aanbeveling
-                        brandveiligheid:</label><textarea id="conclusiebrandveiligheid" class="auto-expand"
-                        rows="3"></textarea></div>
+                        brandveiligheid:</label><textarea id="conclusiebrandveiligheid" class="auto-expand" rows="11"
+                        placeholder="Wij adviseren om de opgemaakte quickscan brandveiligheid voor te leggen aan de bevoegde lokale brandweerzone. De brandweer kan beoordelen welke vastgestelde aandachtspunten prioritair of noodzakelijk zijn in functie van de geldende regelgeving, de lokale brandpreventierichtlijnen en de specifieke risico’s van het gebouw.
+
+Dit advies is in het bijzonder relevant voor de beoordeling van aanwezige of ontbrekende voorzieningen, zoals brand- of evacuatieladders, bijkomende vluchtmogelijkheden, rookafvoer, compartimentering en signalisatie. Het advies van de brandweer vormt een belangrijke leidraad voor het bepalen van de verdere acties en zorgt ervoor dat de voorgestelde maatregelen afgestemd zijn op de concrete gebouwconfiguratie en het beoogde veiligheidsniveau.
+
+Indien brand- of evacuatieladders aanwezig zijn, worden deze in het instandhoudingsscenario en het duurzaam renovatiescenario mee opgenomen onder de rubriek “Gevels en balkons”. Indien dergelijke voorzieningen ontbreken, wordt dit als aandachtspunt meegenomen binnen de quickscan brandveiligheid en, waar nodig, vertaald naar concrete aanbevelingen."></textarea>
+                </div>
             </div>
 
             <h3>Asbestveiligheid</h3>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatieasbest">Vastgestelde situatie
-                        asbestveiligheid:</label><textarea id="vastgesteldesituatieasbest" class="auto-expand"
-                        rows="3"></textarea>
+                        asbestveiligheid:</label><textarea id="vastgesteldesituatieasbest" class="auto-expand" rows="1"
+                        placeholder="Bijv. Voor het onderzochte gebouw werd geen asbestinventarisverslag of asbestattest ter beschikking gesteld."></textarea>
                 </div>
                 <div class="veld"><label for="conclusieasbest">Conclusie en aanbeveling
-                        asbestveiligheid:</label><textarea id="conclusieasbest" class="auto-expand" rows="3"></textarea>
+                        asbestveiligheid:</label><textarea id="conclusieasbest" class="auto-expand" rows="4"
+                        placeholder="Bijv. Aangezien het gebouw dateert van vóór 2001, vormt de afwezigheid van een asbestinventaris of asbestattest een belangrijk aandachtspunt. De VME dient tijdig de nodige stappen te ondernemen om een asbestattest voor de gemeenschappelijke delen te laten opmaken, uiterlijk binnen de wettelijke termijn. Daarnaast is het aangewezen om bij toekomstige onderhouds-, renovatie- of afbraakwerken voorafgaandelijk na te gaan of asbesthoudende materialen aanwezig zijn, zodat de werken veilig, conform de regelgeving en zonder risico op ongecontroleerde asbestblootstelling kunnen worden uitgevoerd."></textarea>
                 </div>
             </div>
 
             <h3>Conformiteit dakisolatienorm</h3>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatiedakisolatie">Vastgestelde situatie
-                        dakisolatie:</label><textarea id="vastgesteldesituatiedakisolatie" class="auto-expand"
-                        rows="3"></textarea>
+                        dakisolatie:</label><textarea id="vastgesteldesituatiedakisolatie" class="auto-expand" rows="3"
+                        placeholder="Bijv. Volgens het EPC van de gemeenschappelijke delen is er isolatie aanwezig onder de dakdichting. Hierbij wordt een berekende U-waarde van 1,7 W/m²K vermeld. Op basis van deze informatie kan worden afgeleid dat er een zekere mate van dakisolatie aanwezig is, maar de effectieve opbouw, dikte en kwaliteit van de aangebrachte isolatie zijn op basis van de beschikbare gegevens niet eenduidig te verifiëren."></textarea>
                 </div>
                 <div class="veld"><label for="conclusiedakisolatie">Conclusie en aanbeveling
-                        dakisolatie:</label><textarea id="conclusiedakisolatie" class="auto-expand" rows="3"></textarea>
+                        dakisolatie:</label><textarea id="conclusiedakisolatie" class="auto-expand" rows="4"
+                        placeholder="Bijv. Om de conformiteit van de dakopbouw correct te kunnen beoordelen, dienen de facturen, technische fiches en/of uitvoeringsdocumenten van de uitgevoerde dakwerken te worden voorgelegd. Op basis daarvan kan worden nagegaan welk type isolatie werd geplaatst, welke dikte werd toegepast en of de dakopbouw voldoet aan de minimaal vereiste dakisolatienorm. Indien deze documenten niet beschikbaar zijn, kan bijkomend onderzoek of een destructieve controle van de dakopbouw noodzakelijk zijn."></textarea>
                 </div>
             </div>
 
@@ -487,21 +534,26 @@ Architect gebouw: P. Lippens (Oostende)"></textarea>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatiedubbelglasnorm">Vastgestelde situatie
                         dubbelglasnorm:</label><textarea id="vastgesteldesituatiedubbelglasnorm" class="auto-expand"
-                        rows="3"></textarea>
+                        rows="2"
+                        placeholder="Bijv. Op basis van de visuele inspectie en de beschikbare gegevens werden geen tekortkomingen vastgesteld met betrekking tot de aanwezigheid van dubbele beglazing."></textarea>
                 </div>
                 <div class="veld"><label for="conclusiedubbelglasnorm">Conclusie en aanbeveling
-                        dubbelglasnorm:</label><textarea id="conclusiedubbelglasnorm" class="auto-expand"
-                        rows="3"></textarea></div>
+                        dubbelglasnorm:</label><textarea id="conclusiedubbelglasnorm" class="auto-expand" rows="3"
+                        placeholder="Bijv. Er worden op heden geen onmiddellijke maatregelen noodzakelijk geacht in het kader van de dubbelglasnorm. Bij toekomstige vervanging van buitenschrijnwerk of beglazing wordt wel aanbevolen om te kiezen voor hoogrendementsbeglazing, zodat niet enkel aan de minimale woonkwaliteitsnormen wordt voldaan, maar ook een verdere verbetering van de energieprestatie, het comfort en de toekomstbestendigheid van het gebouw wordt gerealiseerd."></textarea>
+                </div>
             </div>
 
             <h3>Liftinstallatie</h3>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatielift">Vastgestelde situatie
-                        liftinstallatie:</label><textarea id="vastgesteldesituatielift" class="auto-expand"
-                        rows="3"></textarea>
+                        liftinstallatie:</label><textarea id="vastgesteldesituatielift" class="auto-expand" rows="2"
+                        placeholder="Bijv. Voor de liftinstallatie werden keuringsverslagen ter beschikking gesteld. Uit deze documenten blijkt dat er opmerkingen werden geformuleerd die verdere opvolging vereisen. De ontvangen documenten omvatten onder meer keurings- en/of regularisatieverslagen met betrekking tot de bestaande liftinstallatie."></textarea>
                 </div>
                 <div class="veld"><label for="conclusielift">Conclusie en aanbeveling
-                        liftinstallatie:</label><textarea id="conclusielift" class="auto-expand" rows="3"></textarea>
+                        liftinstallatie:</label><textarea id="conclusielift" class="auto-expand" rows="7"
+                        placeholder="Bijv. De opmerkingen uit de keuringsverslagen dienen systematisch te worden opgevolgd en, waar nodig, binnen de opgelegde termijnen te worden verholpen. Het is aangewezen om samen met de onderhoudsfirma en de erkende keuringsinstantie na te gaan welke maatregelen nog noodzakelijk zijn om de liftinstallatie volledig conform, veilig en bedrijfszeker te houden.
+
+Openstaande opmerkingen worden best opgenomen in het instandhoudingsscenario, zodat de VME beschikt over een duidelijk overzicht van de noodzakelijke acties, prioriteiten en te verwachten kosten. Indien moderniseringswerken vereist zijn, dienen deze te worden afgestemd op de technische staat van de lift, de resterende levensduur van de installatie en de toekomstige renovatievisie voor het gebouw."></textarea>
                 </div>
             </div>
 
@@ -509,23 +561,41 @@ Architect gebouw: P. Lippens (Oostende)"></textarea>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatieelektrisch">Vastgestelde situatie
                         elektrische installatie:</label><textarea id="vastgesteldesituatieelektrisch"
-                        class="auto-expand" rows="3"></textarea>
+                        class="auto-expand" rows="2"
+                        placeholder="Bijv. Voor de gemeenschappelijke elektrische installatie werd een keuringsverslag opgemaakt op 26/02/2025. In dit verslag  werden opmerkingen en inbreuken vastgesteld die verdere opvolging vereisen. Het betreft het verslag met referentie 4/26022025/44560/52424/4."></textarea>
                 </div>
                 <div class="veld"><label for="conclusieelektrisch">Conclusie en aanbeveling
-                        elektrische installatie:</label><textarea id="conclusieelektrisch" class="auto-expand"
-                        rows="3"></textarea></div>
+                        elektrische installatie:</label><textarea id="conclusieelektrisch" class="auto-expand" rows="4"
+                        placeholder="Bijv. De opmerkingen uit het keuringsverslag dienen systematisch te worden nagezien en binnen de opgelegde termijn te worden verholpen. Het is aangewezen om hiervoor een erkend elektricien aan te stellen, die de vastgestelde inbreuken technisch beoordeelt, de nodige regularisatiewerken uitvoert en de installatie voorbereidt op een conforme herkeuring. De regularisatie van de elektrische installatie wordt opgenomen als aandachtspunt binnen het instandhoudingsscenario, aangezien dit verband houdt met de wettelijke conformiteit, de brandveiligheid en de algemene gebruiksveiligheid van het gebouw."></textarea>
+                </div>
             </div>
 
             <h3>Toegankelijkheid</h3>
             <div class="veld">
                 <div class="veld"><label for="vastgesteldesituatietoegankelijkheid">Vastgestelde situatie
                         toegankelijkheid:</label><textarea id="vastgesteldesituatietoegankelijkheid" class="auto-expand"
-                        rows="3"></textarea>
+                        rows="2"
+                        placeholder="Bijv. Tijdens de visuele inspectie werden geen specifieke tekortkomingen of opmerkingen vastgesteld met betrekking tot de toegankelijkheid van de gemeenschappelijke delen."></textarea>
                 </div>
                 <div class="veld"><label for="conclusietoegankelijkheid">Conclusie en aanbeveling
-                        toegankelijkheid:</label><textarea id="conclusietoegankelijkheid" class="auto-expand"
-                        rows="3"></textarea></div>
+                        toegankelijkheid:</label><textarea id="conclusietoegankelijkheid" class="auto-expand" rows="3"
+                        placeholder="Bijv. Er worden op heden geen onmiddellijke maatregelen noodzakelijk geacht. Bij toekomstige renovatie- of aanpassingswerken wordt wel aanbevolen om de toegankelijkheid systematisch mee te beoordelen en, waar technisch en ruimtelijk haalbaar, te optimaliseren. Op die manier kan het gebouw beter worden afgestemd op de huidige verwachtingen inzake gebruikscomfort, levenslang wonen en toegankelijkheid voor personen met een beperkte mobiliteit."></textarea>
+                </div>
             </div>
+
+            <h2>Samenvatting conditiestaat gedeelte veiligheid en woonkwaliteit</h2>
+            <div class="sectie"
+                style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff;">
+                <div
+                    style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                    <label for="aantal_gebrekenv"><b>Hoeveel gebreken wilt u in de samenvatting zetten?</b> </label>
+                    <input type="number" id="aantal_gebrekenv" min="0" value="0"
+                        style="width: 60px; margin-left: 8px; padding: 4px;"
+                        oninput="updateElementenAantal('gebrekenv')">
+                </div>
+                <div id="gebrekenvContainer"></div>
+            </div>
+
             <h2>Bespreking energetische prestaties van de gebouwschil</h2>
             <h3>U-waarden en controle van de dakopbouw</h3>
             <div class="input-groep-rij">
@@ -725,6 +795,33 @@ Architect gebouw: P. Lippens (Oostende)"></textarea>
                     placeholder="Bijv. Uit het EPC-attest van de gemeenschappelijke delen blijkt dat de gebouwschil energetisch onvoldoende presteert ten opzichte van de langetermijndoelstellingen. Vooral de daken, buitenmuren, ramen, beglazing en vloeren veroorzaken belangrijke warmteverliezen. Daarnaast zijn er op installatieniveau meerdere aandachtspunten, waaronder het ontbreken van collectieve ventilatie, hernieuwbare energie en energiezuinige gemeenschappelijke verlichting.
                     
 De grootste energetische winst wordt verwacht door een geïntegreerde renovatie van de gebouwschil, gecombineerd met een doordachte visie op ventilatie, zomercomfort, verlichting en hernieuwbare energie. Deze aandachtspunten worden verder meegenomen in het instandhoudingsscenario en het duurzaam renovatiescenario."></textarea>
+            </div>
+
+            <h2>Samenvatting conditiestaat gedeelte energie</h2>
+            <h3>EPC gemeenschappelijke delen</h3>
+            <div class="sectie"
+                style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff;">
+                <div
+                    style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                    <label for="aantal_gebrekenepcgd"><b>Hoeveel gebreken wilt u in de samenvatting zetten?</b> </label>
+                    <input type="number" id="aantal_gebrekenepcgd" min="0" value="0"
+                        style="width: 60px; margin-left: 8px; padding: 4px;"
+                        oninput="updateElementenAantal('gebrekenepcgd')">
+                </div>
+                <div id="gebrekenepcgdContainer"></div>
+            </div>
+
+            <h3>EPC privatieve kavels</h3>
+            <div class="sectie"
+                style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff;">
+                <div
+                    style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                    <label for="aantal_gebrekenepcpr"><b>Hoeveel gebreken wilt u in de samenvatting zetten?</b> </label>
+                    <input type="number" id="aantal_gebrekenepcpr" min="0" value="0"
+                        style="width: 60px; margin-left: 8px; padding: 4px;"
+                        oninput="updateElementenAantal('gebrekenepcpr')">
+                </div>
+                <div id="gebrekenepcprContainer"></div>
             </div>
 
             <h2>Totaalsamenvatting conditiestaat</h2>
@@ -1137,7 +1234,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff;">
                 <div
                     style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
-                    <label for="aantal_referenties"><b>Hoeveel elementen wilt u bespreken?</b> </label>
+                    <label for="aantal_referenties"><b>Hoeveel referenties heeft u?</b> </label>
                     <input type="number" id="aantal_referenties" min="0" value="0"
                         style="width: 60px; margin-left: 8px; padding: 4px;"
                         oninput="updateElementenAantal('referenties')">
@@ -1306,7 +1403,21 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
         function updateElementenAantal(sectieNaam) {
             const container = document.getElementById(`${sectieNaam}Container`);
-            const gewenstAantal = parseInt(document.getElementById(`aantal_${sectieNaam}`).value) || 0;
+
+            // 1. Controleer eerst of de input überhaupt bestaat
+            const inputEl = document.getElementById(`aantal_${sectieNaam}`);
+            if (!inputEl) {
+                console.error(`Input met id 'aantal_${sectieNaam}' is niet gevonden in de HTML!`);
+                return; // Stopt de functie direct om de crash te voorkomen
+            }
+
+            const gewenstAantal = parseInt(inputEl.value) || 0;
+
+            if (!container) {
+                console.error(`Container met id '${sectieNaam}Container' is niet gevonden!`);
+                return;
+            }
+
             const huidigeRijen = container.getElementsByClassName(`${sectieNaam}-item`);
             const huidigAantal = huidigeRijen.length;
 
@@ -1329,80 +1440,122 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
             if (sectieNaam === 'referenties') {
                 div.innerHTML = `
-        <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Referentie #${index}</div>
-        <div style="display: flex; gap: 8px; margin-bottom: 8px; align-items: center;">
-            <input type="text" class="ref-adres" placeholder="Adres" style="width: 50%; padding: 4px;">
-            
-            <div style="display: flex; align-items: center; width: 25%;">
-                <span style="margin-right: 4px;">€</span>
-                <input type="number" class="ref-vraagprijs" placeholder="Vraagprijs" style="width: 100%; padding: 4px;">
-            </div>
-            
-            <div style="display: flex; align-items: center; width: 25%;">
-                <input type="number" class="ref-oppervlakte" placeholder="Oppervlakte" style="width: 100%; padding: 4px;">
-                <span style="margin-left: 4px;">m²</span>
-            </div>
-        </div>
-        
-        <div style="display: flex; gap: 8px;">
-            <input type="text" class="ref-prijs-per" placeholder="Prijs / m²" readonly style="flex: 1; padding: 4px; background-color: #e9ecef;">
-            <input type="text" class="ref-bouwjaar" placeholder="Bouwjaar" style="flex: 1; padding: 4px;">
-            <input type="text" class="ref-epc-score" placeholder="EPC score" style="flex: 1; padding: 4px;">
-        </div>
-    `;
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Referentie #${index}</div>
+                    <div style="display: flex; gap: 8px; margin-bottom: 8px; align-items: center;">
+                        <input type="text" class="ref-adres" placeholder="Adres" style="width: 50%; padding: 4px;">
+                        
+                        <div style="display: flex; align-items: center; width: 25%;">
+                            <span style="margin-right: 4px;">€</span>
+                            <input type="number" class="ref-vraagprijs" placeholder="Vraagprijs" style="width: 100%; padding: 4px;">
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; width: 25%;">
+                            <input type="number" class="ref-oppervlakte" placeholder="Oppervlakte" style="width: 100%; padding: 4px;">
+                            <span style="margin-left: 4px;">m²</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" class="ref-prijs-per" placeholder="Prijs / m²" readonly style="flex: 1; padding: 4px; background-color: #e9ecef;">
+                        <input type="text" class="ref-bouwjaar" placeholder="Bouwjaar" style="flex: 1; padding: 4px;">
+                        <input type="text" class="ref-epc-score" placeholder="EPC score" style="flex: 1; padding: 4px;">
+                    </div>
+                `;
+
+            } else if (sectieNaam == 'gebrekenb') {
+                div.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Gebrek #${index} bouwkunde</div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" class="gebrekenb-gebrek" placeholder="Omschrijving van het gebrek (bijv. Lekkage dakbedekking)" style="width: 65%; padding: 4px;">
+                        <input type="text" class="gebrekenb-locatie" placeholder="Locatie (bijv. Daken)" style="width: 35%; padding: 4px;">                        
+                    </div>
+                `;
+            } else if (sectieNaam == 'gebrekent') {
+                div.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Gebrek #${index} technieken</div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" class="gebrekent-gebrek" placeholder="Omschrijving van het gebrek (bijv. Elekrische bekabeling en verbindingen)" style="width: 65%; padding: 4px;">
+                        <input type="text" class="gebrekent-locatie" placeholder="Locatie (bijv. Gemeenschappelijke delen)" style="width: 35%; padding: 4px;">                        
+                    </div>
+                `;
+
+            } else if (sectieNaam == 'gebrekenv') {
+                div.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Gebrek #${index} veiligheid en woonkwaliteit</div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" class="gebrekenv-gebrek" placeholder="Omschrijving van het gebrek (bijv. Doorvalbeveiliging lage ramen)" style="width: 65%; padding: 4px;">
+                        <input type="text" class="gebrekenv-locatie" placeholder="Locatie (bijv. Gemeenschappelijke delen)" style="width: 35%; padding: 4px;">                        
+                    </div>
+                `;
+            } else if (sectieNaam == 'gebrekenepcgd') {
+                div.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Gebrek #${index} EPC gemeenschappelijke delen</div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" class="gebrekenepcgd-gebrek" placeholder="Omschrijving van het gebrek (bijv. Onvoldoende isolatie)" style="width: 65%; padding: 4px;">
+                        <input type="text" class="gebrekenepcgd-locatie" placeholder="Locatie (bijv. Ramen en deuren)" style="width: 35%; padding: 4px;">                        
+                    </div>
+                `;
+            } else if (sectieNaam == 'gebrekenepcpr') {
+                div.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Gebrek #${index} EPC gemeenschappelijke delen</div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" class="gebrekenepcpr-gebrek" placeholder="Omschrijving van het gebrek (bijv. Onvoldoende isolatie)" style="width: 65%; padding: 4px;">
+                        <input type="text" class="gebrekenepcpr-locatie" placeholder="Locatie (bijv. Muren)" style="width: 35%; padding: 4px;">                        
+                    </div>
+                `;
 
 
             } else {
 
                 div.innerHTML = `
-            <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Element #${index}</div>
-            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-              <input type="text" class="el-code" style="width: 20%; padding: 4px;" placeholder="Code">
-              <textarea class="el-bouwdeel" style="width: 40%; padding: 4px;" placeholder="Bouwdeel"></textarea>
-              <textarea class="el-gebrek" style="width: 40%; padding: 4px;" placeholder="Gebrek"></textarea>
-            </div>
-            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-              <select class="el-ernst" style="flex: 1; padding: 4px;">
-                <option value="">-- Ernst (E) --</option>
-                <option value="Ernstig">Ernstig</option>
-                <option value="Serieus">Serieus</option>
-                <option value="Gering">Gering</option>
-              </select>
-              <select class="el-intensiteit" style="flex: 1; padding: 4px;">
-                <option value="">-- Intensiteit (I) --</option>
-                <option value="I1">Laag (I1)</option>
-                <option value="I2">Matig (I2)</option>
-                <option value="I3">Hoog (I3)</option>
-              </select>
-              <select class="el-omvang" style="flex: 1; padding: 4px;">
-                <option value="">-- Omvang (O) --</option>
-                <option value="O1">Zeer lokaal (O1)</option>
-                <option value="O2">Beperkt (O2)</option>
-                <option value="O3">Gemiddeld (O3)</option>
-                <option value="O4">Uitgebreid (O4)</option>
-                <option value="O5">Algemeen (O5)</option>
-              </select>
-              <select class="el-conditie" style="flex: 1; padding: 4px;">
-                <option value="">-- Conditie (C) --</option>
-                <option value="C1">Uitstekend (C1)</option>
-                <option value="C2">Goed (C2)</option>
-                <option value="C3">Redelijk (C3)</option>
-                <option value="C4">Matig (C4)</option>
-                <option value="C5">Slecht (C5)</option>                
-                <option value="C6">Zeer slecht (C6)</option>
-              </select>
-            </div>
-            <div style="display: flex; gap: 8px; align-items: center;">
-              <select class="el-rpi" style="width: 30%; padding: 4px;">
-                <option value="">-- Prioriteit (RPI) --</option>
-                <option value="Hoog">Hoog (1)</option>
-                <option value="Middel">Middel (2)</option>
-                <option value="Laag">Laag (3)</option>
-              </select>
-              <label style="margin-left: 10px;"><b>Foto('s):</b></label>
-              <input type="file" class="el-foto" accept="image/*" multiple style="flex: 1;">
-            </div>
-        `;
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Element #${index}</div>
+                    <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                        <input type="text" class="el-code" style="width: 20%; padding: 4px;" placeholder="Code">
+                        <textarea class="el-bouwdeel" style="width: 40%; padding: 4px;" placeholder="Bouwdeel"></textarea>
+                        <textarea class="el-gebrek" style="width: 40%; padding: 4px;" placeholder="Gebrek"></textarea>
+                    </div>
+                    <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                    <select class="el-ernst" style="flex: 1; padding: 4px;">
+                        <option value="">-- Ernst (E) --</option>
+                        <option value="Ernstig">Ernstig</option>
+                        <option value="Serieus">Serieus</option>
+                        <option value="Gering">Gering</option>
+                    </select>
+                    <select class="el-intensiteit" style="flex: 1; padding: 4px;">
+                        <option value="">-- Intensiteit (I) --</option>
+                        <option value="I1">Laag (I1)</option>
+                        <option value="I2">Matig (I2)</option>
+                        <option value="I3">Hoog (I3)</option>
+                    </select>
+                    <select class="el-omvang" style="flex: 1; padding: 4px;">
+                        <option value="">-- Omvang (O) --</option>
+                        <option value="O1">Zeer lokaal (O1)</option>
+                        <option value="O2">Beperkt (O2)</option>
+                        <option value="O3">Gemiddeld (O3)</option>
+                        <option value="O4">Uitgebreid (O4)</option>
+                        <option value="O5">Algemeen (O5)</option>
+                    </select>
+                    <select class="el-conditie" style="flex: 1; padding: 4px;">
+                        <option value="">-- Conditie (C) --</option>
+                        <option value="C1">Uitstekend (C1)</option>
+                        <option value="C2">Goed (C2)</option>
+                        <option value="C3">Redelijk (C3)</option>
+                        <option value="C4">Matig (C4)</option>
+                        <option value="C5">Slecht (C5)</option>                
+                        <option value="C6">Zeer slecht (C6)</option>
+                    </select>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                    <select class="el-rpi" style="width: 30%; padding: 4px;">
+                        <option value="">-- Prioriteit (RPI) --</option>
+                        <option value="Hoog">Hoog (1)</option>
+                        <option value="Middel">Middel (2)</option>
+                        <option value="Laag">Laag (3)</option>
+                    </select>
+                    <label style="margin-left: 10px;"><b>Foto('s):</b></label>
+                    <input type="file" class="el-foto" accept="image/*" multiple style="flex: 1;">
+                    </div>
+                `;
             }
 
             container.appendChild(div);
@@ -1421,7 +1574,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 const prijsPerM2Input = rij.querySelector('.ref-prijs-per');
 
                 if (!isNaN(vraagprijs) && !isNaN(oppervlakte) && oppervlakte > 0) {
-                    // Reken de juiste prijs per m² uit zonder decimalen (bijv. 15000)
                     const uitkomst = Math.round(vraagprijs / oppervlakte);
                     prijsPerM2Input.value = uitkomst;
                 } else {
@@ -1528,6 +1680,84 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
                     return { tonen: true, elementen };
                 }
+
+
+                const gebrekenbData = [];
+                const gebrekenbItems = document.querySelectorAll('#gebrekenbContainer .gebrekenb-item, #gebrekenbContainer > div');
+
+                gebrekenbItems.forEach(item => {
+                    const gebrekInput = item.querySelector('.gebrekenb-gebrek')?.value.trim() || '';
+                    const locatieInput = item.querySelector('.gebrekenb-locatie')?.value.trim() || '';
+
+                    // Alleen toevoegen als er daadwerkelijk iets is ingevuld
+                    if (gebrekInput || locatieInput) {
+                        gebrekenbData.push({
+                            gebrekb: gebrekInput,
+                            locatieb: locatieInput
+                        });
+                    }
+                });
+
+                const gebrekentData = [];
+                const gebrekentItems = document.querySelectorAll('#gebrekentContainer .gebrekent-item, #gebrekentContainer > div');
+
+                gebrekentItems.forEach(item => {
+                    const gebrekInput = item.querySelector('.gebrekent-gebrek')?.value.trim() || '';
+                    const locatieInput = item.querySelector('.gebrekent-locatie')?.value.trim() || '';
+
+                    if (gebrekInput || locatieInput) {
+                        gebrekentData.push({
+                            gebrekt: gebrekInput,
+                            locatiet: locatieInput
+                        });
+                    }
+                });
+
+                const gebrekenvData = [];
+                const gebrekenvItems = document.querySelectorAll('#gebrekenvContainer .gebrekenv-item, #gebrekenvContainer > div');
+
+                gebrekenvItems.forEach(item => {
+                    const gebrekInput = item.querySelector('.gebrekenv-gebrek')?.value.trim() || '';
+                    const locatieInput = item.querySelector('.gebrekenv-locatie')?.value.trim() || '';
+
+                    if (gebrekInput || locatieInput) {
+                        gebrekenvData.push({
+                            gebrekv: gebrekInput,
+                            locatiev: locatieInput
+                        });
+                    }
+                });
+
+                const gebrekenepcgdData = [];
+                const gebrekenepcgdItems = document.querySelectorAll('#gebrekenepcgdContainer .gebrekenepcgd-item, #gebrekenepcgdContainer > div');
+
+                gebrekenepcgdItems.forEach(item => {
+                    const gebrekInput = item.querySelector('.gebrekenepcgd-gebrek')?.value.trim() || '';
+                    const locatieInput = item.querySelector('.gebrekenepcgd-locatie')?.value.trim() || '';
+
+                    if (gebrekInput || locatieInput) {
+                        gebrekenepcgdData.push({
+                            gebrek: gebrekInput,
+                            locatie: locatieInput
+                        });
+                    }
+                });
+
+                const gebrekenepcprData = [];
+                const gebrekenepcprItems = document.querySelectorAll('#gebrekenepcprContainer .gebrekenepcpr-item, #gebrekenepcprContainer > div');
+
+                gebrekenepcprItems.forEach(item => {
+                    const gebrekInput = item.querySelector('.gebrekenepcpr-gebrek')?.value.trim() || '';
+                    const locatieInput = item.querySelector('.gebrekenepcpr-locatie')?.value.trim() || '';
+
+                    if (gebrekInput || locatieInput) {
+                        gebrekenepcprData.push({
+                            gebrek: gebrekInput,
+                            locatie: locatieInput
+                        });
+                    }
+                });
+
 
                 const fotoHoofdBuffer = await leesFotoVeilig(document.getElementById('fotohoofd'));
                 const fotoIdentificatieBuffer = await leesFotoVeilig(document.getElementById('fotoidentificatie'));
@@ -1888,7 +2118,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 if (statusZonneEnergie === 'rood') {
                     zonneEnergieIcoon = "❌";
 
-                    // Alleen als er écht een aandachtspunt is ingevuld
                     if (eigenAandachtspuntZonneEnergie.trim() !== "") {
                         aandachtspuntTeller++;
                         zonneEnergieAandachtspuntTitel = `Aandachtspunt ${aandachtspuntTeller}: `;
@@ -1913,7 +2142,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     } else if (val === 'rood' || val === 'voldoet_niet' || val === 'slecht') {
                         return '❌';
                     }
-                    return ''; 
+                    return '';
                 }
 
                 function formatteerGetal(waarde) {
@@ -1924,6 +2153,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         : parseFloat(waarde.toString().replace(/\./g, '').replace(',', '.'));
 
                     if (isNaN(nummer)) return waarde;
+
 
                     return nummer.toLocaleString('nl-BE');
                 }
@@ -1952,6 +2182,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
                     const vNum = parseFloat(v ? v.replace(/\./g, '').replace(',', '.') : 0);
                     const oNum = parseFloat(o ? o.replace(/\./g, '').replace(',', '.') : 0);
+
                     const sNum = parseFloat(s ? s.replace(/\./g, '').replace(',', '.') : NaN);
 
                     if (vNum > 0 && oNum > 0) {
@@ -2058,6 +2289,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     garage_elementen: garageData.elementen,
                     geen_garage_elementen: !garageData.tonen || garageData.elementen.length === 0,
 
+                    gebrekenb: gebrekenbData,
+
                     tonen_ventilatie: ventilatieData.tonen && ventilatieData.elementen.length > 0,
                     ventilatie_elementen: ventilatieData.elementen,
                     geen_ventilatie_elementen: !ventilatieData.tonen || ventilatieData.elementen.length === 0,
@@ -2082,6 +2315,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     lift_elementen: liftData.elementen,
                     geen_lift_elementen: !liftData.tonen || liftData.elementen.length === 0,
 
+                    gebrekent: gebrekentData,
+
                     conclusieconditiestaatbouwkunde: getVal('conclusieconditiestaatbouwkunde'),
                     conclusieconditiestaattechnieken: getVal('conclusieconditiestaattechnieken'),
 
@@ -2101,7 +2336,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     conclusieveiligheidsbeglazing: getVal('conclusieveiligheidsbeglazing'),
 
                     vastgesteldesituatiebrandveiligheid: getVal('vastgesteldesituatiebrandveiligheid'),
-                    conclusiebrandveiligheid: getVal('conclusiebrandveiligheid'), // Corrected key to match HTML ID
+                    conclusiebrandveiligheid: getVal('conclusiebrandveiligheid'),
 
                     vastgesteldesituatieasbest: getVal('vastgesteldesituatieasbest'),
                     conclusieasbest: getVal('conclusieasbest'),
@@ -2120,6 +2355,12 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
                     vastgesteldesituatietoegankelijkheid: getVal('vastgesteldesituatietoegankelijkheid'),
                     conclusietoegankelijkheid: getVal('conclusietoegankelijkheid'),
+
+                    gebrekenv: gebrekenvData,
+
+                    gebrekenepcgd: gebrekenepcgdData,
+
+                    gebrekenepcpr: gebrekenepcprData,
 
                     dak_icoon: dakIcoon,
                     dak_tekst: dakTekst,
@@ -2255,10 +2496,11 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     referenties: referentiesElementen,
                     gem_marktwaarde: gemMarktwaardeTekst,
 
-                    tot_per_appartement: tot_per_appartement,             
-                    per_appartement_afgerond: per_appartement_afgerond, 
-                    tot_vastgoedwaarde: tot_vastgoedwaarde,              
-                    vastgoedwaarde_afgerond: vastgoedwaarde_afgerond,  
+
+                    tot_per_appartement: tot_per_appartement,
+                    per_appartement_afgerond: per_appartement_afgerond,
+                    tot_vastgoedwaarde: tot_vastgoedwaarde,
+                    vastgoedwaarde_afgerond: vastgoedwaarde_afgerond,
                     afgerond_miljoen: afgerond_miljoen
                 };
                 doc.render(data);
