@@ -1241,6 +1241,34 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 </div>
                 <div id="referentiesContainer"></div>
             </div>
+            <h2>Instandhoudingsscenario</h2>
+            <div class="sectie"
+                style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff; margin-bottom: 20px;">
+                <!-- Invoer voor het aantal onderhoudsposten -->
+                <div
+                    style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                    <label for="aantal_onderhoud"><b>Hoeveel onderhoudsposten wilt u toevoegen?</b></label>
+                    <input type="number" id="aantal_onderhoud" min="0" value="0"
+                        style="width: 60px; margin-left: 8px; padding: 4px;"
+                        oninput="updateElementenAantal('onderhoud')">
+                </div>
+
+                <!-- Container waarin de JS-code de rijen dynamisch aanmaakt -->
+                <div id="onderhoudContainer"></div>
+            </div>
+            <div class="sectie"
+                style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff; margin-bottom: 20px;">
+                <div
+                    style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                    <label for="aantal_maatregelen"><b>Hoeveel maatregelen wilt u toevoegen?</b></label>
+                    <input type="number" id="aantal_maatregelen" min="0" value="0"
+                        style="width: 60px; margin-left: 8px; padding: 4px;"
+                        oninput="updateElementenAantal('maatregelen')">
+                </div>
+
+                <div id="maatregelenContainer"></div>
+            </div>
+
 
     </div>
 
@@ -1504,6 +1532,65 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     </div>
                 `;
 
+            } else if (sectieNaam === 'maatregelen') {
+                // 1. Tel hoeveel maatregel-blokken er nu AL op het scherm staan + 1
+                const container = document.getElementById('maatregelenContainer');
+                const bestaandeAantal = container ? container.querySelectorAll('.maatregel-item').length : 0;
+                const hetJuisteNummer = bestaandeAantal + 1;
+
+                div.className = 'maatregel-item'; // Unieke class op de container
+                div.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Maatregel #${hetJuisteNummer}</div>
+                    
+                    <!-- Regel 1: Code & Omschrijving -->
+                    <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                        <input type="text" class="maat-code" value="M${hetJuisteNummer}" style="width: 20%; padding: 4px;" placeholder="Code">
+                        <textarea class="maat-maatregel auto-expand" style="width: 80%; padding: 4px;" placeholder="Omschrijving maatregel..."></textarea>
+                    </div>
+
+                    <!-- Regel 2: Financiële velden -->
+                    <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
+                        <input type="text" class="maat-prioriteit" style="flex: 1; padding: 4px;" placeholder="Prioriteit (bijv. 2026)">
+                        <input type="number" class="maat-raming" style="flex: 1; padding: 4px;" placeholder="Raming incl. btw (€)" oninput="berekenVastgoedimpact(this)">
+                        <input type="number" class="maat-factor" style="flex: 1; padding: 4px;" placeholder="Meerwaarde %" min="0" max="100" oninput="berekenVastgoedimpact(this)">
+                        <input type="text" class="maat-impact" style="flex: 1; padding: 4px; background-color: #f0f0f0;" placeholder="Indicatieve impact" readonly>
+                    </div>
+
+                    <!-- Regel 3: De 3 extra velden -->
+                    <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #ccc;">
+                        <textarea class="maat-aanleiding auto-expand" style="width: 100%; padding: 4px;" placeholder="Aanleiding..."></textarea>
+                        <textarea class="maat-werken auto-expand" style="width: 100%; padding: 4px;" placeholder="Uit te voeren werken..."></textarea>
+                        <textarea class="maat-invloed auto-expand" style="width: 100%; padding: 4px;" placeholder="Invloed..."></textarea>
+                    </div>
+                `;
+            }
+
+            else if (sectieNaam === 'onderhoud') {
+                div.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Onderhoudspost #${index}</div>
+                    
+                    <!-- Regel 1: Frequentie & Belangrijkste posten -->
+                    <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                        <select class="ond-frequentie" style="width: 25%; padding: 4px;" onchange="bereken20Jaarskost(this)">
+                            <option value="">-- Frequentie --</option>
+                            <option value="Jaarlijks">Jaarlijks</option>
+                            <option value="2-jaarlijks">2-jaarlijks</option>
+                            <option value="3-jaarlijks">3-jaarlijks</option>
+                            <option value="5-jaarlijks">5-jaarlijks</option>
+                            <option value="10-jaarlijks">10-jaarlijks</option>
+                            <option value="15-jaarlijks">15-jaarlijks</option>
+                        </select>
+                        <textarea class="ond-posten auto-expand" style="width: 75%; padding: 4px;" placeholder="Belangrijkste posten..."></textarea>
+                    </div>
+
+                    <!-- Regel 2: Startkost & Berekende 20-jaarskost -->
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <input type="number" class="ond-startkost" style="flex: 1; padding: 4px;" placeholder="Startkost incl. btw (€)" oninput="bereken20Jaarskost(this)">
+                        <input type="text" class="ond-tweedertigjaarskost" style="flex: 1; padding: 4px; background-color: #f0f0f0;" placeholder="Indicatieve 20-jaarskost incl. 2% indexatie" readonly>
+                    </div>
+                `;
+
+
 
             } else {
 
@@ -1581,6 +1668,68 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 }
             }
         });
+
+        function berekenVastgoedimpact(element) {
+            const rij = element.closest('div[style*="display: flex"]').parentElement;
+
+            // 1. Veilig de waarden uitlezen uit de invoervelden
+            const ramingRaw = rij.querySelector('.maat-raming')?.value || '';
+            const raming = parseFloat(ramingRaw.replace(/[^0-9.]/g, '').replace(',', '.')) || 0;
+
+            const factorRaw = rij.querySelector('.maat-factor')?.value || '';
+            const factor = parseFloat(factorRaw.replace(/[^0-9.]/g, '').replace(',', '.')) || 0;
+
+            // 2. Zuiver afronden op gehele euro's
+            const impact = Math.round(raming * (factor / 100));
+
+            // 3. Veld invullen (zonder decimalen/komma's achteraan)
+            const impactVeld = rij.querySelector('.maat-impact');
+            if (impactVeld) {
+                impactVeld.value = impact > 0
+                    ? '€ ' + impact.toLocaleString('nl-BE', { maximumFractionDigits: 0 })
+                    : '';
+            }
+        }
+
+        function bereken20Jaarskost(element) {
+            const rij = element.closest('div[style*="display: flex"]').parentElement;
+
+            // 1. Veilig de startkost uitlezen
+            const startkostRaw = rij.querySelector('.ond-startkost')?.value || '';
+            const startkost = parseFloat(startkostRaw.replace(/[^0-9.]/g, '').replace(',', '.')) || 0;
+
+            const frequentie = rij.querySelector('.ond-frequentie')?.value || '';
+
+            // 2. Bepaal het interval in jaren
+            let interval = 0;
+            if (frequentie === 'Jaarlijks') interval = 1;
+            else if (frequentie === '2-jaarlijks') interval = 2;
+            else if (frequentie === '3-jaarlijks') interval = 3;
+            else if (frequentie === '5-jaarlijks') interval = 5;
+            else if (frequentie === '10-jaarlijks') interval = 10;
+            else if (frequentie === '15-jaarlijks') interval = 15;
+
+            let totaal20Jaar = 0;
+
+            if (startkost > 0 && interval > 0) {
+                for (let jaar = 0; jaar < 20; jaar += interval) {
+                    totaal20Jaar += startkost * Math.pow(1.02, jaar);
+                }
+            }
+
+            // 3. Afronden op gehele euro's
+            const afgerondTotaal = Math.round(totaal20Jaar);
+
+            // 4. Veld invullen (zonder decimalen/komma's achteraan)
+            const uitkomstVeld = rij.querySelector('.ond-tweedertigjaarskost');
+            if (uitkomstVeld) {
+                uitkomstVeld.value = afgerondTotaal > 0
+                    ? '€ ' + afgerondTotaal.toLocaleString('nl-BE', { maximumFractionDigits: 0 })
+                    : '';
+            }
+        }
+
+
 
         async function verwerkSjabloon() {
             const status = document.getElementById('status');
@@ -2236,6 +2385,106 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 const afgerond_miljoen = formatteerMiljoen(totVastgoedwaardeGetal);
 
 
+                function berekenVastgoedimpact(element) {
+                    const rij = element.closest('div[style*="display: flex"]').parentElement;
+
+                    const raming = parseFloat(rij.querySelector('.maat-raming')?.value) || 0;
+                    const factor = parseFloat(rij.querySelector('.maat-factor')?.value) || 0;
+                    const impact = Math.round(raming * (factor / 100));
+
+                    const impactVeld = rij.querySelector('.maat-impact');
+                    if (impactVeld) {
+                        impactVeld.value = impact > 0 ? '€ ' + impact.toLocaleString('nl-BE') : '';
+                    }
+                }
+
+
+                let somRamingen = 0;
+                let somImpact = 0;
+                const maatregelenData = [];
+
+                function leesWaarde(parent, selector) {
+                    if (!parent) return '';
+                    var el = parent.querySelector(selector);
+                    if (!el) return '';
+                    var tekst = (el.value !== undefined) ? el.value : el.textContent;
+                    return tekst ? tekst.trim() : '';
+                }
+
+                const maatregelenItems = document.querySelectorAll('#maatregelenContainer > div');
+
+                maatregelenItems.forEach(function (node) {
+                    if (!node) return;
+
+                    var code = leesWaarde(node, '.maat-code');
+                    var omschrijving = leesWaarde(node, '.maat-maatregel');
+
+                    // Sla lege dubbele blokken over
+                    if (!code && !omschrijving) return;
+
+                    var rVal = parseFloat(leesWaarde(node, '.maat-raming')) || 0;
+                    var fVal = parseFloat(leesWaarde(node, '.maat-factor')) || 0;
+                    var iVal = Math.round(rVal * (fVal / 100));
+
+                    somRamingen += rVal;
+                    somImpact += iVal;
+
+                    maatregelenData.push({
+                        codem: code,
+                        maatregelm: omschrijving,
+                        prioriteitm: leesWaarde(node, '.maat-prioriteit'),
+                        ramingm: rVal > 0 ? '€ ' + Math.round(rVal).toLocaleString('nl-BE') : '',
+                        factorm: fVal ? fVal + '%' : '',
+                        impactm: iVal > 0 ? '€ ' + iVal.toLocaleString('nl-BE') : '',
+                        aanleidingm: leesWaarde(node, '.maat-aanleiding'),
+                        werkenm: leesWaarde(node, '.maat-werken'),
+                        invloedm: leesWaarde(node, '.maat-invloed')
+                    });
+                });
+
+                function updateMaatregelNummers() {
+                    const blokken = document.querySelectorAll('#maatregelenContainer > div');
+                    blokken.forEach((blok, index) => {
+                        const nummer = index + 1;
+
+                        // Update de titel (Maatregel #1, #2, etc.)
+                        const titel = blok.querySelector('h4') || blok.querySelector('strong');
+                        if (titel) {
+                            titel.textContent = `Maatregel #${nummer}`;
+                        }
+
+                        // Zorg dat de code-input automatisch meetelt (M1, M2, etc.)
+                        const codeInput = blok.querySelector('.maat-code');
+                        if (codeInput) {
+                            codeInput.value = `M${nummer}`;
+                        }
+                    });
+                }
+                // B. ONDERHOUD
+                let som20Jaar = 0;
+                const onderhoudData = [];
+                const onderhoudItems = document.querySelectorAll('#onderhoudContainer > div');
+
+                onderhoudItems.forEach(item => {
+                    const kostTekst = item.querySelector('.ond-tweedertigjaarskost')?.value || '';
+                    const kostVal = parseFloat(kostTekst.replace(/[^0-9]/g, '')) || 0;
+                    som20Jaar += kostVal;
+
+                    onderhoudData.push({
+                        frequentieo: item.querySelector('.ond-frequentie')?.value || '',
+                        posteno: item.querySelector('.ond-posten')?.value.trim() || '',
+                        startkosto: item.querySelector('.ond-startkost')?.value ? '€ ' + Math.round(parseFloat(item.querySelector('.ond-startkost').value)).toLocaleString('nl-BE') : '',
+                        tweedertigkosto: kostTekst
+                    });
+                });
+
+
+                const totVastgoedwaarde = parseFloat(document.getElementById('tot_vastgoedwaarde')?.value) || 0;
+
+                const totPerAppartement = aantalAppInvoer > 0 ? Math.round(totVastgoedwaarde / aantalAppInvoer) : 0;
+                const eindTotaal = somRamingen + som20Jaar;
+                const kostPerAppartement = aantalAppInvoer > 0 ? Math.round(eindTotaal / aantalAppInvoer) : 0;
+
                 const data = {
                     fotohoofd: fotoHoofdBuffer,
                     fotoidentificatie: fotoIdentificatieBuffer,
@@ -2501,7 +2750,18 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     per_appartement_afgerond: per_appartement_afgerond,
                     tot_vastgoedwaarde: tot_vastgoedwaarde,
                     vastgoedwaarde_afgerond: vastgoedwaarde_afgerond,
-                    afgerond_miljoen: afgerond_miljoen
+                    afgerond_miljoen: afgerond_miljoen,
+
+                    maatregelen: maatregelenData,
+                    onderhoud: onderhoudData,
+                    totaal_ramingen: somRamingen > 0 ? '€ ' + somRamingen.toLocaleString('nl-BE') : '€ 0',
+                    totaal_20jaar: som20Jaar > 0
+                        ? '€ ' + Math.round(som20Jaar).toLocaleString('nl-BE', { maximumFractionDigits: 0 })
+                        : '€ 0',
+                    eindtotaal_kosten: eindTotaal > 0 ? '€ ' + eindTotaal.toLocaleString('nl-BE') : '€ 0',
+                    kosten_per_appartement: kostPerAppartement > 0 ? '€ ' + kostPerAppartement.toLocaleString('nl-BE') : '€ 0',
+                    totaal_impact: somImpact > 0 ? '€ ' + somImpact.toLocaleString('nl-BE') : '€ 0',
+
                 };
                 doc.render(data);
 
