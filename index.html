@@ -1431,31 +1431,29 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
         function updateElementenAantal(sectieNaam) {
             const container = document.getElementById(`${sectieNaam}Container`);
-
-            // 1. Controleer eerst of de input überhaupt bestaat
             const inputEl = document.getElementById(`aantal_${sectieNaam}`);
-            if (!inputEl) {
-                console.error(`Input met id 'aantal_${sectieNaam}' is niet gevonden in de HTML!`);
-                return; // Stopt de functie direct om de crash te voorkomen
-            }
+
+            if (!inputEl || !container) return;
 
             const gewenstAantal = parseInt(inputEl.value) || 0;
 
-            if (!container) {
-                console.error(`Container met id '${sectieNaam}Container' is niet gevonden!`);
-                return;
-            }
-
-            const huidigeRijen = container.getElementsByClassName(`${sectieNaam}-item`);
+            // Gebruik querySelectorAll i.p.v. getElementsByClassName om een statische lijst te krijgen
+            const huidigeRijen = container.querySelectorAll(`.${sectieNaam}-item`);
             const huidigAantal = huidigeRijen.length;
 
             if (gewenstAantal > huidigAantal) {
+                // Voeg alleen het exacte ontbrekende aantal toe
                 for (let i = huidigAantal; i < gewenstAantal; i++) {
                     voegElementRijToe(sectieNaam, i + 1);
                 }
             } else if (gewenstAantal < huidigAantal) {
-                for (let i = huidigAantal; i > gewenstAantal; i--) {
-                    container.removeChild(container.lastChild);
+                // Verwijder alleen de overtollige rijen vanaf het einde
+                const teVerwijderen = huidigAantal - gewenstAantal;
+                for (let i = 0; i < teVerwijderen; i++) {
+                    const laatsteRij = container.querySelector(`.${sectieNaam}-item:last-of-type`);
+                    if (laatsteRij) {
+                        laatsteRij.remove();
+                    }
                 }
             }
         }
@@ -1525,7 +1523,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 `;
             } else if (sectieNaam == 'gebrekenepcpr') {
                 div.innerHTML = `
-                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Gebrek #${index} EPC gemeenschappelijke delen</div>
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Gebrek #${index} EPC privatieve kavels</div>
                     <div style="display: flex; gap: 8px;">
                         <input type="text" class="gebrekenepcpr-gebrek" placeholder="Omschrijving van het gebrek (bijv. Onvoldoende isolatie)" style="width: 65%; padding: 4px;">
                         <input type="text" class="gebrekenepcpr-locatie" placeholder="Locatie (bijv. Muren)" style="width: 35%; padding: 4px;">                        
@@ -1533,18 +1531,12 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 `;
 
             } else if (sectieNaam === 'maatregelen') {
-                // 1. Tel hoeveel maatregel-blokken er nu AL op het scherm staan + 1
-                const container = document.getElementById('maatregelenContainer');
-                const bestaandeAantal = container ? container.querySelectorAll('.maatregel-item').length : 0;
-                const hetJuisteNummer = bestaandeAantal + 1;
 
-                div.className = 'maatregel-item'; // Unieke class op de container
+                div.className = 'maatregelen-item';
                 div.innerHTML = `
-                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Maatregel #${hetJuisteNummer}</div>
-                    
-                    <!-- Regel 1: Code & Omschrijving -->
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Maatregel #${index}</div>
                     <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-                        <input type="text" class="maat-code" value="M${hetJuisteNummer}" style="width: 20%; padding: 4px;" placeholder="Code">
+                    <input type="text" class="maat-code" value="M${index}" style="width: 20%; padding: 4px;" placeholder="Code">
                         <textarea class="maat-maatregel auto-expand" style="width: 80%; padding: 4px;" placeholder="Omschrijving maatregel..."></textarea>
                     </div>
 
@@ -1563,9 +1555,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         <textarea class="maat-invloed auto-expand" style="width: 100%; padding: 4px;" placeholder="Invloed..."></textarea>
                     </div>
                 `;
-            }
 
-            else if (sectieNaam === 'onderhoud') {
+            } else if (sectieNaam === 'onderhoud') {
                 div.innerHTML = `
                     <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Onderhoudspost #${index}</div>
                     
@@ -2411,7 +2402,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     return tekst ? tekst.trim() : '';
                 }
 
-                const maatregelenItems = document.querySelectorAll('#maatregelenContainer > div');
+                const maatregelenItems = document.querySelectorAll('#maatregelenContainer .maatregelen-item');
 
                 maatregelenItems.forEach(function (node) {
                     if (!node) return;
@@ -2442,24 +2433,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     });
                 });
 
-                function updateMaatregelNummers() {
-                    const blokken = document.querySelectorAll('#maatregelenContainer > div');
-                    blokken.forEach((blok, index) => {
-                        const nummer = index + 1;
 
-                        // Update de titel (Maatregel #1, #2, etc.)
-                        const titel = blok.querySelector('h4') || blok.querySelector('strong');
-                        if (titel) {
-                            titel.textContent = `Maatregel #${nummer}`;
-                        }
-
-                        // Zorg dat de code-input automatisch meetelt (M1, M2, etc.)
-                        const codeInput = blok.querySelector('.maat-code');
-                        if (codeInput) {
-                            codeInput.value = `M${nummer}`;
-                        }
-                    });
-                }
                 // B. ONDERHOUD
                 let som20Jaar = 0;
                 const onderhoudData = [];
@@ -2484,7 +2458,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 const totPerAppartement = aantalAppInvoer > 0 ? Math.round(totVastgoedwaarde / aantalAppInvoer) : 0;
                 const eindTotaal = somRamingen + som20Jaar;
                 const kostPerAppartement = aantalAppInvoer > 0 ? Math.round(eindTotaal / aantalAppInvoer) : 0;
-
+                console.log("Aantal gevonden rijen in container:", document.querySelectorAll('#maatregelenContainer .maatregelen-item').length);
+                console.log("WAT ZIT ER IN MAATREGELENDATA?", JSON.stringify(maatregelenData, null, 2));
                 const data = {
                     fotohoofd: fotoHoofdBuffer,
                     fotoidentificatie: fotoIdentificatieBuffer,
