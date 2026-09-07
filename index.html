@@ -1268,6 +1268,87 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
                 <div id="maatregelenContainer"></div>
             </div>
+            <h2>Energie- en besparingsanalyse</h2>
+            <div id="verliespostenContainer">
+                <div class="verliespost-row" data-post="Dak"
+                    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 6px; background: #fdfdfd; border: 1px solid #ccc; border-radius: 4px;">
+                    <span style="width: 150px; font-weight: bold;">Dak</span>
+                    <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-verschil" placeholder="Verschil" readonly
+                        style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
+                </div>
+                <div class="verliespost-row" data-post="Gevel"
+                    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 6px; background: #fdfdfd; border: 1px solid #ccc; border-radius: 4px;">
+                    <span style="width: 150px; font-weight: bold;">Gevel</span>
+                    <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-verschil" placeholder="Verschil" readonly
+                        style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
+                </div>
+                <div class="verliespost-row" data-post="Grond"
+                    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 6px; background: #fdfdfd; border: 1px solid #ccc; border-radius: 4px;">
+                    <span style="width: 150px; font-weight: bold;">Grond</span>
+                    <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-verschil" placeholder="Verschil" readonly
+                        style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
+                </div>
+                <div class="verliespost-row" data-post="Ramen"
+                    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 6px; background: #fdfdfd; border: 1px solid #ccc; border-radius: 4px;">
+                    <span style="width: 150px; font-weight: bold;">Ramen</span>
+                    <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-verschil" placeholder="Verschil" readonly
+                        style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
+                </div>
+                <div class="verliespost-row" data-post="Infiltratieverliezen"
+                    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 6px; background: #fdfdfd; border: 1px solid #ccc; border-radius: 4px;">
+                    <span style="width: 150px; font-weight: bold;">Infiltratieverliezen</span>
+                    <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-verschil" placeholder="Verschil" readonly
+                        style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
+                </div>
+                <div class="verliespost-row" data-post="SWW"
+                    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 6px; background: #fdfdfd; border: 1px solid #ccc; border-radius: 4px;">
+                    <span style="width: 150px; font-weight: bold;">SWW</span>
+                    <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-verschil" placeholder="Verschil" readonly
+                        style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
+                </div>
+                <div class="verliespost-row" data-post="Installatie/elek."
+                    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding: 6px; background: #fdfdfd; border: 1px solid #ccc; border-radius: 4px;">
+                    <span style="width: 150px; font-weight: bold;">Installatie/elek.</span>
+                    <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-verschil" placeholder="Verschil" readonly
+                        style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
+                </div>
+                <div
+                    style="margin-top: 10px; font-weight: bold; padding: 8px; background: #f4f8f3; border: 1px solid #d0e2cd; border-radius: 4px;">
+                    Totaal 0-meting: <span id="totaal-0">0</span> kWh/jaar |
+                    Totaal Instandhouding: <span id="totaal-inst">0</span> kWh/jaar |
+                    Totaal Verschil: <span id="totaal-verschil">0</span>
+                </div>
+
+
+            </div>
 
 
     </div>
@@ -1436,18 +1517,14 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             if (!inputEl || !container) return;
 
             const gewenstAantal = parseInt(inputEl.value) || 0;
-
-            // Gebruik querySelectorAll i.p.v. getElementsByClassName om een statische lijst te krijgen
             const huidigeRijen = container.querySelectorAll(`.${sectieNaam}-item`);
             const huidigAantal = huidigeRijen.length;
 
             if (gewenstAantal > huidigAantal) {
-                // Voeg alleen het exacte ontbrekende aantal toe
                 for (let i = huidigAantal; i < gewenstAantal; i++) {
                     voegElementRijToe(sectieNaam, i + 1);
                 }
             } else if (gewenstAantal < huidigAantal) {
-                // Verwijder alleen de overtollige rijen vanaf het einde
                 const teVerwijderen = huidigAantal - gewenstAantal;
                 for (let i = 0; i < teVerwijderen; i++) {
                     const laatsteRij = container.querySelector(`.${sectieNaam}-item:last-of-type`);
@@ -1662,18 +1739,12 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
         function berekenVastgoedimpact(element) {
             const rij = element.closest('div[style*="display: flex"]').parentElement;
-
-            // 1. Veilig de waarden uitlezen uit de invoervelden
             const ramingRaw = rij.querySelector('.maat-raming')?.value || '';
             const raming = parseFloat(ramingRaw.replace(/[^0-9.]/g, '').replace(',', '.')) || 0;
 
             const factorRaw = rij.querySelector('.maat-factor')?.value || '';
             const factor = parseFloat(factorRaw.replace(/[^0-9.]/g, '').replace(',', '.')) || 0;
-
-            // 2. Zuiver afronden op gehele euro's
             const impact = Math.round(raming * (factor / 100));
-
-            // 3. Veld invullen (zonder decimalen/komma's achteraan)
             const impactVeld = rij.querySelector('.maat-impact');
             if (impactVeld) {
                 impactVeld.value = impact > 0
@@ -1684,14 +1755,10 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
         function bereken20Jaarskost(element) {
             const rij = element.closest('div[style*="display: flex"]').parentElement;
-
-            // 1. Veilig de startkost uitlezen
             const startkostRaw = rij.querySelector('.ond-startkost')?.value || '';
             const startkost = parseFloat(startkostRaw.replace(/[^0-9.]/g, '').replace(',', '.')) || 0;
 
             const frequentie = rij.querySelector('.ond-frequentie')?.value || '';
-
-            // 2. Bepaal het interval in jaren
             let interval = 0;
             if (frequentie === 'Jaarlijks') interval = 1;
             else if (frequentie === '2-jaarlijks') interval = 2;
@@ -1707,11 +1774,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     totaal20Jaar += startkost * Math.pow(1.02, jaar);
                 }
             }
-
-            // 3. Afronden op gehele euro's
             const afgerondTotaal = Math.round(totaal20Jaar);
-
-            // 4. Veld invullen (zonder decimalen/komma's achteraan)
             const uitkomstVeld = rij.querySelector('.ond-tweedertigjaarskost');
             if (uitkomstVeld) {
                 uitkomstVeld.value = afgerondTotaal > 0
@@ -1719,7 +1782,48 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     : '';
             }
         }
+        function berekenVerschilEnTotalen() {
+            const rijen = document.querySelectorAll('.verliespost-row');
+            let som0 = 0;
+            let somInst = 0;
+            let somVerschil = 0;
 
+            rijen.forEach(rij => {
+                const input0 = rij.querySelector('.meting-0');
+                const inputInst = rij.querySelector('.meting-inst');
+                const inputVerschil = rij.querySelector('.meting-verschil');
+
+                // Haal de waarde op en haal eventuele bestaande punten weg om te kunnen rekenen
+                let val0Raw = input0.value.replace(/\./g, '').replace(',', '.');
+                let valInstRaw = inputInst.value.replace(/\./g, '').replace(',', '.');
+
+                let val0 = parseFloat(val0Raw) || 0;
+                let valInst = parseFloat(valInstRaw) || 0;
+
+                // Bereken het verschil
+                let verschil = val0 - valInst;
+
+                // Formateer de waarden zonder komma's/decimalen
+                if (input0.value !== "") input0.value = val0.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
+                if (inputInst.value !== "") inputInst.value = valInst.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
+                inputVerschil.value = verschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
+
+                // Optellen voor de totalen
+                som0 += val0;
+                somInst += valInst;
+                somVerschil += verschil;
+            });
+
+            // Veilige update van de totalen onderaan op het scherm
+            const elTotaal0 = document.getElementById('totaal-0');
+            if (elTotaal0) elTotaal0.innerText = som0.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
+
+            const elTotaalInst = document.getElementById('totaal-inst');
+            if (elTotaalInst) elTotaalInst.innerText = somInst.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
+
+            const elTotaalVerschil = document.getElementById('totaal-verschil');
+            if (elTotaalVerschil) elTotaalVerschil.innerText = somVerschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
+        }
 
 
         async function verwerkSjabloon() {
@@ -1828,8 +1932,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 gebrekenbItems.forEach(item => {
                     const gebrekInput = item.querySelector('.gebrekenb-gebrek')?.value.trim() || '';
                     const locatieInput = item.querySelector('.gebrekenb-locatie')?.value.trim() || '';
-
-                    // Alleen toevoegen als er daadwerkelijk iets is ingevuld
                     if (gebrekInput || locatieInput) {
                         gebrekenbData.push({
                             gebrekb: gebrekInput,
@@ -2409,8 +2511,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
                     var code = leesWaarde(node, '.maat-code');
                     var omschrijving = leesWaarde(node, '.maat-maatregel');
-
-                    // Sla lege dubbele blokken over
                     if (!code && !omschrijving) return;
 
                     var rVal = parseFloat(leesWaarde(node, '.maat-raming')) || 0;
@@ -2433,8 +2533,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     });
                 });
 
-
-                // B. ONDERHOUD
                 let som20Jaar = 0;
                 const onderhoudData = [];
                 const onderhoudItems = document.querySelectorAll('#onderhoudContainer > div');
@@ -2458,8 +2556,33 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 const totPerAppartement = aantalAppInvoer > 0 ? Math.round(totVastgoedwaarde / aantalAppInvoer) : 0;
                 const eindTotaal = somRamingen + som20Jaar;
                 const kostPerAppartement = aantalAppInvoer > 0 ? Math.round(eindTotaal / aantalAppInvoer) : 0;
-                console.log("Aantal gevonden rijen in container:", document.querySelectorAll('#maatregelenContainer .maatregelen-item').length);
-                console.log("WAT ZIT ER IN MAATREGELENDATA?", JSON.stringify(maatregelenData, null, 2));
+
+                const verliespostenData = [];
+                let totaalMeting0 = 0;
+                let totaalMetingInst = 0;
+                let totaalVerschil = 0;
+
+                document.querySelectorAll('.verliespost-row').forEach(rij => {
+                    const postNaam = rij.getAttribute('data-post');
+                    const meting0 = rij.querySelector('.meting-0.value') || rij.querySelector('.meting-0').value || "0";
+                    const metingInst = rij.querySelector('.meting-inst').value || "0";
+                    const verschil = rij.querySelector('.meting-verschil').value || "0";
+
+                    verliespostenData.push({
+                        post: postNaam,
+                        meting0: meting0,
+                        metingInst: metingInst,
+                        verschil: verschil
+                    });
+
+                    // Schoonmaken voor de optelling
+                    totaalMeting0 += parseFloat(meting0.replace(/\./g, '')) || 0;
+                    totaalMetingInst += parseFloat(metingInst.replace(/\./g, '')) || 0;
+                    totaalVerschil += parseFloat(verschil.replace(/\./g, '')) || 0;
+                });
+
+
+
                 const data = {
                     fotohoofd: fotoHoofdBuffer,
                     fotoidentificatie: fotoIdentificatieBuffer,
@@ -2737,6 +2860,10 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     kosten_per_appartement: kostPerAppartement > 0 ? '€ ' + kostPerAppartement.toLocaleString('nl-BE') : '€ 0',
                     totaal_impact: somImpact > 0 ? '€ ' + somImpact.toLocaleString('nl-BE') : '€ 0',
 
+                    verliesposten: verliespostenData,
+                    totaalMeting0: totaalMeting0.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
+                    totaalMetingInst: totaalMetingInst.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
+                    totaalVerschil: totaalVerschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 })
                 };
                 doc.render(data);
 
