@@ -1374,7 +1374,20 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
                     <div id="onderhoudspostenContainer"></div>
                 </div>
+                <h2>ENERGETISCHE RENOVATIEMAATREGELEN</h2>
+                <div class="sectie"
+                    style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff; margin-bottom: 20px;">
+                    <div
+                        style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                        <label for="aantal_remaatregelen"><b>Hoeveel ENERGETISCHE RENOVATIEMAATREGELEN wilt u
+                                toevoegen?</b></label>
+                        <input type="number" id="aantal_remaatregelen" min="0" value="0"
+                            style="width: 60px; margin-left: 8px; padding: 4px;"
+                            oninput="updateElementenAantal('remaatregelen')">
+                    </div>
 
+                    <div id="remaatregelenContainer"></div>
+                </div>
             </div>
 
 
@@ -2691,6 +2704,26 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     }
                 });
 
+                const remaatregelenLijst = [];
+
+                document.querySelectorAll('.remaatregel-rij').forEach(rij => {
+                    const naam = rij.querySelector('.naam-input')?.value || '';
+                    const jaar = rij.querySelector('.jaar-input')?.value || '';
+                    const kostenVal = parseFloat(rij.querySelector('.kosten-input')?.value) || 0;
+                    const impact = rij.querySelector('.impact-input')?.value || '';
+                    const prioriteit = rij.querySelector('.prioriteit-input')?.value || '';
+
+                    if (naam.trim() !== '') {
+                        remaatregelenLijst.push({
+                            naam: naam,
+                            jaar: jaar,
+                            kosten: '€ ' + kostenVal.toLocaleString('nl-NL'), // Zet het euroteken voor de waarde in Word
+                            impact: impact,
+                            prioriteit: prioriteit
+                        });
+                    }
+                });
+
 
                 const data = {
                     fotohoofd: fotoHoofdBuffer,
@@ -2977,6 +3010,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     renovatiemaatregel: renovatieData,
 
                     onderhoudsposten: onderhoudsLijst,
+
+                    remaatregelen: remaatregelenLijst,
 
                 };
                 doc.render(data);
