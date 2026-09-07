@@ -1346,7 +1346,20 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     Totaal Instandhouding: <span id="totaal-inst">0</span> kWh/jaar |
                     Totaal Verschil: <span id="totaal-verschil">0</span>
                 </div>
+                <h2>FINANCIËLE ANALYSE</h2>
+                <div class="sectie"
+                    style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff; margin-bottom: 20px;">
+                    <div
+                        style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                        <label for="aantal_renovatiemaatregel"><b>Hoeveel renovatiemaatregelen wilt u
+                                toevoegen?</b></label>
+                        <input type="number" id="aantal_renovatiemaatregel" min="0" value="0"
+                            style="width: 60px; margin-left: 8px; padding: 4px;"
+                            oninput="updateElementenAantal('renovatiemaatregel')">
+                    </div>
 
+                    <div id="renovatiemaatregelContainer"></div>
+                </div>
 
             </div>
 
@@ -1514,11 +1527,19 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             const container = document.getElementById(`${sectieNaam}Container`);
             const inputEl = document.getElementById(`aantal_${sectieNaam}`);
 
-            if (!inputEl || !container) return;
+            console.log("Container gevonden:", container);
+            console.log("Input gevonden:", inputEl);
+
+            if (!inputEl || !container) {
+                console.error("Kan container of input niet vinden voor:", sectieNaam);
+                return;
+            }
 
             const gewenstAantal = parseInt(inputEl.value) || 0;
             const huidigeRijen = container.querySelectorAll(`.${sectieNaam}-item`);
             const huidigAantal = huidigeRijen.length;
+
+            console.log("Gewenst aantal:", gewenstAantal, "| Huidig aantal:", huidigAantal);
 
             if (gewenstAantal > huidigAantal) {
                 for (let i = huidigAantal; i < gewenstAantal; i++) {
@@ -1536,7 +1557,12 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
         }
 
         function voegElementRijToe(sectieNaam, index) {
+            console.log("voegElementRijToe gestart voor:", sectieNaam, "index:", index);
             const container = document.getElementById(`${sectieNaam}Container`);
+            if (!container) {
+                console.error("Container niet gevonden in voegElementRijToe voor:", sectieNaam);
+                return;
+            }
             const div = document.createElement('div');
             div.className = `${sectieNaam}-item`;
             div.style.cssText = 'border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; border-radius: 5px; background: #fdfdfd;';
@@ -1657,6 +1683,20 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         <input type="text" class="ond-tweedertigjaarskost" style="flex: 1; padding: 4px; background-color: #f0f0f0;" placeholder="Indicatieve 20-jaarskost incl. 2% indexatie" readonly>
                     </div>
                 `;
+            } else if (sectieNaam === 'renovatiemaatregel') {
+                div.className = `${sectieNaam}-item`;
+                div.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Maatregel #${index}</div>
+            <div style="display: flex; gap: 8px; align-items: flex-start;">
+                <input type="text" class="maatregel-input" placeholder="Renovatiemaatregel" style="width: 30%; padding: 4px;">
+                <div style="width: 15%; display: flex; align-items: center; gap: 4px;">
+                    <input type="text" class="factor-input" placeholder="Meerwaarde" style="width: 100%; padding: 4px; text-align: center;">
+                    <span style="font-weight: bold; color: #555;">%</span>
+                </div>
+                <textarea class="toelichting-input auto-expand" placeholder="Toelichting" style="width: 55%; padding: 4px; resize: none; overflow-y: hidden;" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+            </div>
+        `;
+
 
 
 
@@ -1714,6 +1754,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             }
 
             container.appendChild(div);
+            console.log("Element toegevoegd aan container:", container);
         }
 
         document.addEventListener('input', function (event) {
@@ -2581,7 +2622,21 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     totaalVerschil += parseFloat(verschil.replace(/\./g, '')) || 0;
                 });
 
+                const renovatieData = [];
 
+                document.querySelectorAll('.renovatiemaatregel-item').forEach(rij => {
+                    const maatregel = rij.querySelector('.maatregel-input').value.trim();
+                    const factor = rij.querySelector('.factor-input').value.trim();
+                    const toelichting = rij.querySelector('.toelichting-input').value.trim();
+
+                    if (maatregel !== "") {
+                        renovatieData.push({
+                            maatregel: maatregel,
+                            factor: factor,
+                            toelichting: toelichting
+                        });
+                    }
+                });
 
                 const data = {
                     fotohoofd: fotoHoofdBuffer,
@@ -2863,7 +2918,9 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     verliesposten: verliespostenData,
                     totaalMeting0: totaalMeting0.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
                     totaalMetingInst: totaalMetingInst.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
-                    totaalVerschil: totaalVerschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 })
+                    totaalVerschil: totaalVerschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
+
+                    renovatiemaatregel: renovatieData,
                 };
                 doc.render(data);
 
