@@ -1360,6 +1360,20 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
                     <div id="renovatiemaatregelContainer"></div>
                 </div>
+                <h2>ONDERHOUD BINNEN HET DUURZAAM SCENARIO</h2>
+                <div class="sectie"
+                    style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff; margin-bottom: 20px;">
+                    <div
+                        style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                        <label for="aantal_onderhoudsposten"><b>Hoeveel onderhoudsposten wilt u
+                                toevoegen?</b></label>
+                        <input type="number" id="aantal_onderhoudsposten" min="0" value="0"
+                            style="width: 60px; margin-left: 8px; padding: 4px;"
+                            oninput="updateElementenAantal('onderhoudsposten')">
+                    </div>
+
+                    <div id="onderhoudspostenContainer"></div>
+                </div>
 
             </div>
 
@@ -1527,8 +1541,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             const container = document.getElementById(`${sectieNaam}Container`);
             const inputEl = document.getElementById(`aantal_${sectieNaam}`);
 
-            console.log("Container gevonden:", container);
-            console.log("Input gevonden:", inputEl);
 
             if (!inputEl || !container) {
                 console.error("Kan container of input niet vinden voor:", sectieNaam);
@@ -1538,8 +1550,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             const gewenstAantal = parseInt(inputEl.value) || 0;
             const huidigeRijen = container.querySelectorAll(`.${sectieNaam}-item`);
             const huidigAantal = huidigeRijen.length;
-
-            console.log("Gewenst aantal:", gewenstAantal, "| Huidig aantal:", huidigAantal);
 
             if (gewenstAantal > huidigAantal) {
                 for (let i = huidigAantal; i < gewenstAantal; i++) {
@@ -1557,7 +1567,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
         }
 
         function voegElementRijToe(sectieNaam, index) {
-            console.log("voegElementRijToe gestart voor:", sectieNaam, "index:", index);
             const container = document.getElementById(`${sectieNaam}Container`);
             if (!container) {
                 console.error("Container niet gevonden in voegElementRijToe voor:", sectieNaam);
@@ -1697,6 +1706,17 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             </div>
         `;
 
+            } else if (sectieNaam === 'onderhoudsposten') {
+                div.className = `${sectieNaam}-item onderhoudspost-rij`;
+                div.innerHTML = `
+        <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Onderhoudspost #${index}</div>
+        <div style="display: flex; gap: 8px; align-items: flex-start;">
+            <input type="text" class="onderdeel-input" placeholder="Onderdeel" style="width: 25%; padding: 4px;">
+            <input type="text" class="onderhoud-input" placeholder="Onderhoud/keuring" style="width: 55%; padding: 4px;">
+            <input type="text" class="frequentieo" placeholder="Frequentie/indicatie" style="width: 20%; padding: 4px;">
+        </div>
+    `;
+
 
 
 
@@ -1754,7 +1774,6 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             }
 
             container.appendChild(div);
-            console.log("Element toegevoegd aan container:", container);
         }
 
         document.addEventListener('input', function (event) {
@@ -2637,6 +2656,23 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         });
                     }
                 });
+                const onderhoudsLijst = [];
+
+                document.querySelectorAll('.onderhoudspost-rij').forEach(rij => {
+                    const onderdeel = rij.querySelector('.onderdeel-input')?.value || '';
+                    const onderhoudkeuring = rij.querySelector('.onderhoud-input')?.value || '';
+                    const frequentie = rij.querySelector('.frequentieo')?.value || '';
+                    const startkost = parseFloat(rij.querySelector('.startkosto')?.value) || 0;
+
+                    if (onderdeel.trim() !== '') {
+                        onderhoudsLijst.push({
+                            onderdeel: onderdeel,
+                            onderhoudkeuring: onderhoudkeuring, // Komt overeen met je tag {onderhoudkeuring} in Word
+                            frequentie: frequentie              // Komt overeen met je tag {frequentie} in Word
+                        });
+                    }
+                });
+
 
                 const data = {
                     fotohoofd: fotoHoofdBuffer,
@@ -2921,6 +2957,9 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     totaalVerschil: totaalVerschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
 
                     renovatiemaatregel: renovatieData,
+
+                    onderhoudsposten: onderhoudsLijst,
+
                 };
                 doc.render(data);
 
