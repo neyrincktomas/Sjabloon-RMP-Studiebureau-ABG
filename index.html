@@ -1379,7 +1379,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff; margin-bottom: 20px;">
                     <div
                         style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
-                        <label for="aantal_remaatregelen"><b>Hoeveel ENERGETISCHE RENOVATIEMAATREGELEN wilt u
+                        <label for="aantal_remaatregelen"><b>Hoeveel energetisch renovatiemaatregelen wilt u
                                 toevoegen?</b></label>
                         <input type="number" id="aantal_remaatregelen" min="0" value="0"
                             style="width: 60px; margin-left: 8px; padding: 4px;"
@@ -1387,6 +1387,19 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     </div>
 
                     <div id="remaatregelenContainer"></div>
+                </div>
+                <div class="sectie"
+                    style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; background-color: #ffffff; margin-bottom: 20px;">
+                    <div
+                        style="margin-bottom: 15px; background: #f4f8f3; padding: 10px; border-radius: 4px; border: 1px solid #d0e2cd;">
+                        <label for="aantal_enmaatregel"><b>Hoeveel energetisch renovatiemaatregelen wilt u uitgebreid
+                                bespreken?</b></label>
+                        <input type="number" id="aantal_enmaatregel" min="0" value="0"
+                            style="width: 60px; margin-left: 8px; padding: 4px;"
+                            oninput="updateElementenAantal('enmaatregel')">
+                    </div>
+
+                    <div id="enmaatregelContainer"></div>
                 </div>
             </div>
 
@@ -1708,16 +1721,16 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             } else if (sectieNaam === 'renovatiemaatregel') {
                 div.className = `${sectieNaam}-item`;
                 div.innerHTML = `
-                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Maatregel #${index}</div>
-                    <div style="display: flex; gap: 8px; align-items: flex-start;">
-                        <input type="text" class="maatregel-input" placeholder="Renovatiemaatregel" style="width: 30%; padding: 4px;">
-                        <div style="width: 15%; display: flex; align-items: center; gap: 4px;">
-                            <input type="text" class="factor-input" placeholder="Meerwaarde" style="width: 100%; padding: 4px; text-align: center;">
-                            <span style="font-weight: bold; color: #555;">%</span>
-                        </div>
-                        <textarea class="toelichting-input auto-expand" placeholder="Toelichting" style="width: 55%; padding: 4px; resize: none; overflow-y: hidden;" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
-                    </div>
-                `;
+            <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Maatregel #${index}</div>
+            <div style="display: flex; gap: 8px; align-items: flex-start;">
+                <input type="text" class="maatregel-input" placeholder="Renovatiemaatregel" style="width: 30%; padding: 4px;">
+                <div style="width: 15%; display: flex; align-items: center; gap: 4px;">
+                    <input type="text" class="factor-input" placeholder="Meerwaarde" style="width: 100%; padding: 4px; text-align: center;">
+                    <span style="font-weight: bold; color: #555;">%</span>
+                </div>
+                <textarea class="toelichting-input auto-expand" placeholder="Toelichting" style="width: 55%; padding: 4px; resize: none; overflow-y: hidden;" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+            </div>
+        `;
 
             } else if (sectieNaam === 'onderhoudsposten') {
                 div.className = `${sectieNaam}-item onderhoudspost-rij`;
@@ -1729,25 +1742,76 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         <input type="text" class="frequentieo" placeholder="Frequentie/indicatie" style="width: 20%; padding: 4px;">
                     </div>
                 `;
+
             } else if (sectieNaam === 'remaatregelen') {
-                            div.className = `${sectieNaam}-item remaatregel-rij`;
-                            div.innerHTML = `
-                                <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Remaatregel #${index}</div>
-                                <div style="display: flex; gap: 8px; align-items: center;">
-                                    <input type="text" class="naam-input" placeholder="Naam" style="width: 30%; padding: 4px;">
-                                    <input type="text" class="jaar-input" placeholder="Jaar" style="width: 15%; padding: 4px;">
-                                    <div style="width: 20%; display: flex; align-items: center; gap: 4px;">
-                                        <span style="font-weight: bold; color: #555;">€</span>
-                                        <input type="number" class="kosten-input" placeholder="Kosten" style="width: 100%; padding: 4px;">
-                                    </div>
-                                    <input type="text" class="impact-input" placeholder="Impact" style="width: 20%; padding: 4px;">
-                                    <select class="prioriteit-input" style="width: 15%; padding: 4px;">
-                                        <option value="Hoog">Hoog</option>
-                                        <option value="Middel">Middel</option>
-                                        <option value="Laag">Laag</option>
-                                    </select>
-                                </div>
-                            `;
+                div.className = `${sectieNaam}-item remaatregel-rij`;
+                div.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Remaatregel #${index}</div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <input type="text" class="naam-input" placeholder="Naam" style="width: 30%; padding: 4px;">
+                        <input type="text" class="jaar-input" placeholder="Jaar" style="width: 15%; padding: 4px;">
+                        <div style="width: 20%; display: flex; align-items: center; gap: 4px;">
+                            <span style="font-weight: bold; color: #555;">€</span>
+                            <input type="number" class="kosten-input" placeholder="Kosten" style="width: 100%; padding: 4px;">
+                        </div>
+                        <input type="text" class="impact-input" placeholder="Impact" style="width: 20%; padding: 4px;">
+                        <select class="prioriteit-input" style="width: 15%; padding: 4px;">
+                            <option value="Hoog">Hoog</option>
+                            <option value="Middel">Middel</option>
+                            <option value="Laag">Laag</option>
+                        </select>
+                    </div>
+                `;
+
+            } else if (sectieNaam === 'enmaatregel') {
+                div.className = `${sectieNaam}-item enmaatregel-rij`;
+                div.innerHTML = `
+        <div style="border: 1px solid #ced4da; padding: 15px; border-radius: 6px; background: #fff; margin-bottom: 15px;">
+            <div style="font-weight: bold; margin-bottom: 10px; color: #333;">Energetische maatregel ${index}</div>
+            
+            <div style="margin-bottom: 10px;">
+                <textarea class="titel-input" placeholder="Titel (bijv. GEVELS, BALKONS EN TERRASSEN)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-weight: bold; resize: none; overflow: hidden;" rows="1" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <textarea class="doelstelling-input" placeholder="Aan te pakken gebreken / doelstelling (bijv. De gevels vertonen veroudering van voegwerk, aansluitingen en waterwerende eigenschappen. Ter hoogte van de balkons zijn waterdichtingsgebreken, beginnende wapeningscorrosie en niet-conforme of onvoldoende duurzaam bevestigde balustrades vastgesteld. In het duurzaam scenario wordt deze noodzakelijke gevel- en balkonrenovatie gecombineerd met een doorgedreven verbetering van de thermische gebouwschil.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="4" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+            </div>
+
+            <div style="font-weight: bold; font-size: 0.95em; margin-bottom: 6px; color: #333;">Uit te voeren werken en kostenraming:</div>
+            
+            <div style="display: flex; gap: 8px; font-weight: bold; font-size: 0.85em; color: #555; margin-bottom: 4px; padding: 0 2px;">
+                <div style="flex: 2;">Post</div>
+                <div style="width: 110px;">Hoeveelheid</div>
+                <div style="width: 90px;">Eenheid</div>
+                <div style="width: 130px;">Prijs</div>
+                <div style="width: 90px; text-align: right;">Totaal</div>
+            </div>
+
+            <!-- Hier worden de rijen in geplaatst -->
+            <div id="posten-container-${index}" style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px;">
+                <div class="post-rij" style="display: flex; gap: 8px; align-items: center;">
+                    <textarea class="post-input" placeholder="Post omschrijving" style="flex: 2; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="1" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+                    <input type="number" class="aantal-input" placeholder="Aantal" style="width: 110px; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px;" value="1">
+                    <input type="text" class="eenheid-input" placeholder="m², lm..." style="width: 90px; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                    <div style="width: 130px; display: flex; align-items: center; gap: 4px; padding: 4px 8px; border: 1px solid #ced4da; border-radius: 4px; background: #fff;">
+                        <span style="font-weight: bold; color: #555;">€</span>
+                        <input type="number" class="eenheidsprijs-input" placeholder="0.00" style="width: 100%; border: none; outline: none; padding: 0;">
+                    </div>
+                    <span class="totaal-preview" style="width: 90px; font-weight: bold; text-align: right;">€ 0</span>
+                </div>
+            </div>
+
+            <button type="button" onclick="voegPostToe(${index})" style="background: #f8f9fa; border: 1px solid #ced4da; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold; margin-bottom: 12px;">+ Post toevoegen</button>
+
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <textarea class="prioriteit-input" placeholder="Prioriteit (bijv. 2031. Dit is de sleutelmaatregel van het duurzaam scenario en wordt best gekoppeld aan balkon- en balustradewerken om dubbele stelling- en werfkosten te vermijden.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+                <textarea class="invlonderhoud-input" placeholder="Invloed op onderhoud (bijv. Na uitvoering dalen de onderhoudsrisico’s voor voegen, waterinfiltratie en balkonafwerking. Het ETICS-systeem vraagt wel periodiek nazicht van slagregenzones, plinten, dilataties en aansluitingen.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+                <textarea class="invlenergiescore-input" placeholder="Invloed op energielabel en energiescore (bijv. Sterke verbetering van de gevel-U-waarde en duidelijke daling van de warmteverliezen via de buitenmuren. De maatregel heeft ook een positief effect op koudebruggen, comfort en condensatierisico.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+                <textarea class="invlvastgoedwaarde-input" placeholder="Invloed op vastgoedwaarde (bijv. Meerwaardefactor 100% op de investeringskost, omdat de maatregel zichtbaar is, comfort verhoogt en de EPC-score structureel verbetert.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+            </div>
+        </div>
+    `;
+
 
 
 
@@ -1915,6 +1979,58 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             const elTotaalVerschil = document.getElementById('totaal-verschil');
             if (elTotaalVerschil) elTotaalVerschil.innerText = somVerschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
         }
+
+        function voegPostToe(index) {
+            const container = document.getElementById(`posten-container-${index}`);
+            if (!container) return;
+
+            const div = document.createElement('div');
+            div.className = 'post-rij';
+            div.style.cssText = 'display: flex; gap: 8px; align-items: center;';
+            div.innerHTML = `
+        <textarea class="post-input" placeholder="Post omschrijving" style="flex: 2; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="1" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+        <input type="number" class="aantal-input" placeholder="Aantal" style="width: 110px; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px;" value="1">
+        <input type="text" class="eenheid-input" placeholder="m², lm..." style="width: 90px; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px;">
+        <div style="width: 130px; display: flex; align-items: center; gap: 4px; padding: 4px 8px; border: 1px solid #ced4da; border-radius: 4px; background: #fff;">
+            <span style="font-weight: bold; color: #555;">€</span>
+            <input type="number" class="eenheidsprijs-input" placeholder="0.00" style="width: 100%; border: none; outline: none; padding: 0;">
+        </div>
+        <span class="totaal-preview" style="width: 90px; font-weight: bold; text-align: right;">€ 0</span>
+    `;
+            container.appendChild(div);
+        }
+        document.addEventListener('input', function (e) {
+            if (e.target.classList.contains('aantal-input') || e.target.classList.contains('eenheidsprijs-input')) {
+                const rij = e.target.closest('.post-rij');
+                if (!rij) return;
+
+                // Bereken totaal van de huidige rij
+                const aantal = parseFloat(rij.querySelector('.aantal-input')?.value) || 0;
+                const prijs = parseFloat(rij.querySelector('.eenheidsprijs-input')?.value) || 0;
+                const totaal = aantal * prijs;
+
+                const totaalPreview = rij.querySelector('.totaal-preview');
+                if (totaalPreview) {
+                    totaalPreview.textContent = '€ ' + Math.round(totaal).toLocaleString('nl-NL');
+                }
+
+                // Bereken direct ook het som-totaal van alle posten in deze specifieke sectie
+                const sectieRij = rij.closest('.enmaatregel-rij');
+                if (sectieRij) {
+                    let sectieTotaal = 0;
+                    sectieRij.querySelectorAll('.post-rij').forEach(prij => {
+                        const a = parseFloat(prij.querySelector('.aantal-input')?.value) || 0;
+                        const p = parseFloat(prij.querySelector('.eenheidsprijs-input')?.value) || 0;
+                        sectieTotaal += a * p;
+                    });
+
+                    const sectieTotaalPreview = sectieRij.querySelector('.sectie-totaal-preview');
+                    if (sectieTotaalPreview) {
+                        sectieTotaalPreview.textContent = '€ ' + Math.round(sectieTotaal).toLocaleString('nl-NL');
+                    }
+                }
+            }
+        });
 
 
         async function verwerkSjabloon() {
@@ -2724,6 +2840,57 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     }
                 });
 
+                const enmaatregellijst = [];
+
+                document.querySelectorAll('.enmaatregel-rij').forEach(rij => {
+                    const titel = rij.querySelector('.titel-input')?.value || '';
+                    const doelstelling = rij.querySelector('.doelstelling-input')?.value || '';
+                    const prioriteit = rij.querySelector('.prioriteit-input')?.value || '';
+                    const invlonderhoud = rij.querySelector('.invlonderhoud-input')?.value || '';
+                    const invlenergiescore = rij.querySelector('.invlenergiescore-input')?.value || '';
+                    const invlvastgoedwaarde = rij.querySelector('.invlvastgoedwaarde-input')?.value || '';
+
+                    const postenLijst = [];
+                    let totaalSectieBedrag = 0;
+
+                    rij.querySelectorAll('.post-rij').forEach(prij => {
+                        const post = prij.querySelector('.post-input')?.value || '';
+                        const aantal = parseFloat(prij.querySelector('.aantal-input')?.value) || 0;
+                        const eenheid = prij.querySelector('.eenheid-input')?.value || '';
+                        const eenheidsprijsVal = parseFloat(prij.querySelector('.eenheidsprijs-input')?.value) || 0;
+                        const totaalVal = aantal * eenheidsprijsVal;
+
+                        totaalSectieBedrag += totaalVal;
+
+                        if (post.trim() !== '') {
+                            const prijsRond = Math.round(eenheidsprijsVal).toLocaleString('nl-NL');
+                            const lowerEenheid = eenheid ? eenheid.toLowerCase().trim() : '';
+                            const eenheidTekst = (eenheid && lowerEenheid !== 'tp' && lowerEenheid !== 'app') ? ` / ${eenheid}` : '';
+
+                            postenLijst.push({
+                                post: post,
+                                aantal: aantal,
+                                eenheid: eenheid,
+                                eenheidsprijs: `€ ${prijsRond}${eenheidTekst}`,
+                                totaal: '€ ' + Math.round(totaalVal).toLocaleString('nl-NL')
+                            });
+                        }
+                    });
+
+                    if (titel.trim() !== '') {
+                        enmaatregellijst.push({
+                            titel: titel,
+                            doelstelling: doelstelling,
+                            posten: postenLijst,
+                            totalsectie: '€ ' + Math.round(totaalSectieBedrag).toLocaleString('nl-NL'),
+                            prioriteit: prioriteit,
+                            invlonderhoud: invlonderhoud,
+                            invlenergiescore: invlenergiescore,
+                            invlvastgoedwaarde: invlvastgoedwaarde
+                        });
+                    }
+                });
+
 
                 const data = {
                     fotohoofd: fotoHoofdBuffer,
@@ -3012,6 +3179,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     onderhoudsposten: onderhoudsLijst,
 
                     remaatregelen: remaatregelenLijst,
+
+                    enmaatregel: enmaatregellijst,
 
                 };
                 doc.render(data);
