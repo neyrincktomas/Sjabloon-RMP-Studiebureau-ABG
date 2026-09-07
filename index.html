@@ -1695,46 +1695,46 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             } else if (sectieNaam === 'renovatiemaatregel') {
                 div.className = `${sectieNaam}-item`;
                 div.innerHTML = `
-            <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Maatregel #${index}</div>
-            <div style="display: flex; gap: 8px; align-items: flex-start;">
-                <input type="text" class="maatregel-input" placeholder="Renovatiemaatregel" style="width: 30%; padding: 4px;">
-                <div style="width: 15%; display: flex; align-items: center; gap: 4px;">
-                    <input type="text" class="factor-input" placeholder="Meerwaarde" style="width: 100%; padding: 4px; text-align: center;">
-                    <span style="font-weight: bold; color: #555;">%</span>
-                </div>
-                <textarea class="toelichting-input auto-expand" placeholder="Toelichting" style="width: 55%; padding: 4px; resize: none; overflow-y: hidden;" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
-            </div>
-        `;
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Maatregel #${index}</div>
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <input type="text" class="maatregel-input" placeholder="Renovatiemaatregel" style="width: 30%; padding: 4px;">
+                        <div style="width: 15%; display: flex; align-items: center; gap: 4px;">
+                            <input type="text" class="factor-input" placeholder="Meerwaarde" style="width: 100%; padding: 4px; text-align: center;">
+                            <span style="font-weight: bold; color: #555;">%</span>
+                        </div>
+                        <textarea class="toelichting-input auto-expand" placeholder="Toelichting" style="width: 55%; padding: 4px; resize: none; overflow-y: hidden;" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+                    </div>
+                `;
 
             } else if (sectieNaam === 'onderhoudsposten') {
                 div.className = `${sectieNaam}-item onderhoudspost-rij`;
                 div.innerHTML = `
-        <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Onderhoudspost #${index}</div>
-        <div style="display: flex; gap: 8px; align-items: flex-start;">
-            <input type="text" class="onderdeel-input" placeholder="Onderdeel" style="width: 25%; padding: 4px;">
-            <input type="text" class="onderhoud-input" placeholder="Onderhoud/keuring" style="width: 55%; padding: 4px;">
-            <input type="text" class="frequentieo" placeholder="Frequentie/indicatie" style="width: 20%; padding: 4px;">
-        </div>
-    `;
-} else if (sectieNaam === 'remaatregelen') {
-                div.className = `${sectieNaam}-item remaatregel-rij`;
-                div.innerHTML = `
-                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Remaatregel #${index}</div>
-                    <div style="display: flex; gap: 8px; align-items: center;">
-                        <input type="text" class="naam-input" placeholder="Naam" style="width: 30%; padding: 4px;">
-                        <input type="text" class="jaar-input" placeholder="Jaar" style="width: 15%; padding: 4px;">
-                        <div style="width: 20%; display: flex; align-items: center; gap: 4px;">
-                            <span style="font-weight: bold; color: #555;">€</span>
-                            <input type="number" class="kosten-input" placeholder="Kosten" style="width: 100%; padding: 4px;">
-                        </div>
-                        <input type="text" class="impact-input" placeholder="Impact" style="width: 20%; padding: 4px;">
-                        <select class="prioriteit-input" style="width: 15%; padding: 4px;">
-                            <option value="Hoog">Hoog</option>
-                            <option value="Middel">Middel</option>
-                            <option value="Laag">Laag</option>
-                        </select>
+                    <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Onderhoudspost #${index}</div>
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <input type="text" class="onderdeel-input" placeholder="Onderdeel" style="width: 25%; padding: 4px;">
+                        <input type="text" class="onderhoud-input" placeholder="Onderhoud/keuring" style="width: 55%; padding: 4px;">
+                        <input type="text" class="frequentieo" placeholder="Frequentie/indicatie" style="width: 20%; padding: 4px;">
                     </div>
                 `;
+            } else if (sectieNaam === 'remaatregelen') {
+                            div.className = `${sectieNaam}-item remaatregel-rij`;
+                            div.innerHTML = `
+                                <div style="font-weight: bold; margin-bottom: 8px; color: #333;">Remaatregel #${index}</div>
+                                <div style="display: flex; gap: 8px; align-items: center;">
+                                    <input type="text" class="naam-input" placeholder="Naam" style="width: 30%; padding: 4px;">
+                                    <input type="text" class="jaar-input" placeholder="Jaar" style="width: 15%; padding: 4px;">
+                                    <div style="width: 20%; display: flex; align-items: center; gap: 4px;">
+                                        <span style="font-weight: bold; color: #555;">€</span>
+                                        <input type="number" class="kosten-input" placeholder="Kosten" style="width: 100%; padding: 4px;">
+                                    </div>
+                                    <input type="text" class="impact-input" placeholder="Impact" style="width: 20%; padding: 4px;">
+                                    <select class="prioriteit-input" style="width: 15%; padding: 4px;">
+                                        <option value="Hoog">Hoog</option>
+                                        <option value="Middel">Middel</option>
+                                        <option value="Laag">Laag</option>
+                                    </select>
+                                </div>
+                            `;
 
 
 
