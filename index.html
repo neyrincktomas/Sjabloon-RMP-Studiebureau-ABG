@@ -1277,6 +1277,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-duur" placeholder="Duurzaam" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-verschil" placeholder="Verschil" readonly
                         style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
                 </div>
@@ -1286,6 +1288,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-duur" placeholder="Duurzaam" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-verschil" placeholder="Verschil" readonly
                         style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
@@ -1297,6 +1301,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-duur" placeholder="Duurzaam" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-verschil" placeholder="Verschil" readonly
                         style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
                 </div>
@@ -1306,6 +1312,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-duur" placeholder="Duurzaam" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-verschil" placeholder="Verschil" readonly
                         style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
@@ -1317,6 +1325,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-duur" placeholder="Duurzaam" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-verschil" placeholder="Verschil" readonly
                         style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
                 </div>
@@ -1326,6 +1336,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     <input type="text" class="meting-0" placeholder="0-meting" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-duur" placeholder="Duurzaam" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-verschil" placeholder="Verschil" readonly
                         style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
@@ -1337,6 +1349,8 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-inst" placeholder="Instandhouding" style="flex: 1; padding: 4px;"
                         oninput="berekenVerschilEnTotalen()">
+                    <input type="text" class="meting-duur" placeholder="Duurzaam" style="flex: 1; padding: 4px;"
+                        oninput="berekenVerschilEnTotalen()">
                     <input type="text" class="meting-verschil" placeholder="Verschil" readonly
                         style="flex: 1; padding: 4px; background-color: #f0f0f0;" value="0">
                 </div>
@@ -1344,6 +1358,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     style="margin-top: 10px; font-weight: bold; padding: 8px; background: #f4f8f3; border: 1px solid #d0e2cd; border-radius: 4px;">
                     Totaal 0-meting: <span id="totaal-0">0</span> kWh/jaar |
                     Totaal Instandhouding: <span id="totaal-inst">0</span> kWh/jaar |
+                    Totaal Duurzaam renovatiescenario: <span id="totaal-duur">0</span> kWh/jaar |
                     Totaal Verschil: <span id="totaal-verschil">0</span>
                 </div>
                 <h2>FINANCIËLE ANALYSE</h2>
@@ -1778,51 +1793,56 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             } else if (sectieNaam === 'enmaatregel') {
                 div.className = `${sectieNaam}-item enmaatregel-rij`;
                 div.innerHTML = `
-                    <div style="border: 1px solid #ced4da; padding: 15px; border-radius: 6px; background: #fff; margin-bottom: 15px;">
-                        <div style="font-weight: bold; margin-bottom: 10px; color: #333;">Energetische maatregel ${index}</div>
-                        
-                        <div style="margin-bottom: 10px;">
-                            <textarea class="titel-input" placeholder="Titel (bijv. GEVELS, BALKONS EN TERRASSEN)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-weight: bold; resize: none; overflow: hidden;" rows="1" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
-                        </div>
+        <div style="border: 1px solid #ced4da; padding: 15px; border-radius: 6px; background: #fff; margin-bottom: 15px; position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <div style="font-weight: bold; color: #333;">Energetische maatregel ${index}</div>
+                <button type="button" onclick="this.closest('.enmaatregel-rij').remove()" style="background: none; border: none; color: #dc3545; cursor: pointer; font-weight: bold; font-size: 1.1em;" title="Verwijder maatregel">✕ Verwijder maatregel</button>
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <textarea class="titel-input" placeholder="Titel (bijv. GEVELS, BALKONS EN TERRASSEN)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-weight: bold; resize: none; overflow: hidden;" rows="1" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+            </div>
 
-                        <div style="margin-bottom: 10px;">
-                            <textarea class="doelstelling-input" placeholder="Aan te pakken gebreken / doelstelling (bijv. De gevels vertonen veroudering van voegwerk, aansluitingen en waterwerende eigenschappen. Ter hoogte van de balkons zijn waterdichtingsgebreken, beginnende wapeningscorrosie en niet-conforme of onvoldoende duurzaam bevestigde balustrades vastgesteld. In het duurzaam scenario wordt deze noodzakelijke gevel- en balkonrenovatie gecombineerd met een doorgedreven verbetering van de thermische gebouwschil.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="4" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
-                        </div>
+            <div style="margin-bottom: 10px;">
+                <textarea class="doelstelling-input" placeholder="Aan te pakken gebreken / doelstelling..." style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="4" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+            </div>
 
-                        <div style="font-weight: bold; font-size: 0.95em; margin-bottom: 6px; color: #333;">Uit te voeren werken en kostenraming:</div>
-                        
-                        <div style="display: flex; gap: 8px; font-weight: bold; font-size: 0.85em; color: #555; margin-bottom: 4px; padding: 0 2px;">
-                            <div style="flex: 2;">Post</div>
-                            <div style="width: 110px;">Hoeveelheid</div>
-                            <div style="width: 90px;">Eenheid</div>
-                            <div style="width: 130px;">Prijs</div>
-                            <div style="width: 90px; text-align: right;">Totaal</div>
-                        </div>
+            <div style="font-weight: bold; font-size: 0.95em; margin-bottom: 6px; color: #333;">Uit te voeren werken en kostenraming:</div>
+            
+            <div style="display: flex; gap: 8px; font-weight: bold; font-size: 0.85em; color: #555; margin-bottom: 4px; padding: 0 2px;">
+                <div style="flex: 2;">Post</div>
+                <div style="width: 110px;">Hoeveelheid</div>
+                <div style="width: 90px;">Eenheid</div>
+                <div style="width: 130px;">Prijs</div>
+                <div style="width: 90px; text-align: right;">Totaal</div>
+                <div style="width: 24px;"></div>
+            </div>
 
-                        <!-- Hier worden de rijen in geplaatst -->
-                        <div id="posten-container-${index}" style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px;">
-                            <div class="post-rij" style="display: flex; gap: 8px; align-items: center;">
-                                <textarea class="post-input" placeholder="Post omschrijving" style="flex: 2; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="1" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
-                                <input type="number" class="aantal-input" placeholder="Aantal" style="width: 110px; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px;" value="1">
-                                <input type="text" class="eenheid-input" placeholder="m², lm..." style="width: 90px; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px;">
-                                <div style="width: 130px; display: flex; align-items: center; gap: 4px; padding: 4px 8px; border: 1px solid #ced4da; border-radius: 4px; background: #fff;">
-                                    <span style="font-weight: bold; color: #555;">€</span>
-                                    <input type="number" class="eenheidsprijs-input" placeholder="0.00" style="width: 100%; border: none; outline: none; padding: 0;">
-                                </div>
-                                <span class="totaal-preview" style="width: 90px; font-weight: bold; text-align: right;">€ 0</span>
-                            </div>
-                        </div>
-
-                        <button type="button" onclick="voegPostToe(${index})" style="background: #f8f9fa; border: 1px solid #ced4da; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold; margin-bottom: 12px;">+ Post toevoegen</button>
-
-                        <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <textarea class="prioriteit-input" placeholder="Prioriteit (bijv. 2031. Dit is de sleutelmaatregel van het duurzaam scenario en wordt best gekoppeld aan balkon- en balustradewerken om dubbele stelling- en werfkosten te vermijden.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
-                            <textarea class="invlonderhoud-input" placeholder="Invloed op onderhoud (bijv. Na uitvoering dalen de onderhoudsrisico’s voor voegen, waterinfiltratie en balkonafwerking. Het ETICS-systeem vraagt wel periodiek nazicht van slagregenzones, plinten, dilataties en aansluitingen.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
-                            <textarea class="invlenergiescore-input" placeholder="Invloed op energielabel en energiescore (bijv. Sterke verbetering van de gevel-U-waarde en duidelijke daling van de warmteverliezen via de buitenmuren. De maatregel heeft ook een positief effect op koudebruggen, comfort en condensatierisico.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
-                            <textarea class="invlvastgoedwaarde-input" placeholder="Invloed op vastgoedwaarde (bijv. Meerwaardefactor 100% op de investeringskost, omdat de maatregel zichtbaar is, comfort verhoogt en de EPC-score structureel verbetert.)" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
-                        </div>
+            <!-- Hier worden de rijen in geplaatst -->
+            <div id="posten-container-${index}" style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px;">
+                <div class="post-rij" style="display: flex; gap: 8px; align-items: center;">
+                    <textarea class="post-input" placeholder="Post omschrijving" style="flex: 2; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="1" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+                    <input type="number" class="aantal-input" placeholder="Aantal" style="width: 110px; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px;" value="1">
+                    <input type="text" class="eenheid-input" placeholder="m², lm..." style="width: 90px; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                    <div style="width: 130px; display: flex; align-items: center; gap: 4px; padding: 4px 8px; border: 1px solid #ced4da; border-radius: 4px; background: #fff;">
+                        <span style="font-weight: bold; color: #555;">€</span>
+                        <input type="number" class="eenheidsprijs-input" placeholder="0.00" style="width: 100%; border: none; outline: none; padding: 0;">
                     </div>
-                `;
+                    <span class="totaal-preview" style="width: 90px; font-weight: bold; text-align: right;">€ 0</span>
+                    <button type="button" onclick="this.closest('.post-rij').remove()" style="background: none; border: none; color: #dc3545; cursor: pointer; font-weight: bold; font-size: 1.1em; width: 24px;" title="Verwijder post">✕</button>
+                </div>
+            </div>
+
+            <button type="button" onclick="voegPostToe(${index})" style="background: #f8f9fa; border: 1px solid #ced4da; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold; margin-bottom: 12px;">+ Post toevoegen</button>
+
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <textarea class="prioriteit-input" placeholder="Prioriteit..." style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+                <textarea class="invlonderhoud-input" placeholder="Invloed op onderhoud..." style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+                <textarea class="invlenergiescore-input" placeholder="Invloed op energielabel en energiescore..." style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+                <textarea class="invlvastgoedwaarde-input" placeholder="Invloed op vastgoedwaarde..." style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; resize: none; overflow: hidden;" rows="2" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
+            </div>
+        </div>
+    `;
 
             } else if (sectieNaam === 'prmaatregel') {
                 div.className = `${sectieNaam}-item prmaatregel-rij`;
@@ -1970,18 +1990,22 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
             let som0 = 0;
             let somInst = 0;
             let somVerschil = 0;
+            let somDuur = 0;
 
             rijen.forEach(rij => {
                 const input0 = rij.querySelector('.meting-0');
                 const inputInst = rij.querySelector('.meting-inst');
                 const inputVerschil = rij.querySelector('.meting-verschil');
+                const inputDuur = rij.querySelector('.meting-duur');
 
                 // Haal de waarde op en haal eventuele bestaande punten weg om te kunnen rekenen
                 let val0Raw = input0.value.replace(/\./g, '').replace(',', '.');
                 let valInstRaw = inputInst.value.replace(/\./g, '').replace(',', '.');
+                let valDuurRaw = inputDuur ? inputDuur.value.replace(/\./g, '').replace(',', '.') : '0';
 
                 let val0 = parseFloat(val0Raw) || 0;
                 let valInst = parseFloat(valInstRaw) || 0;
+                let valDuur = parseFloat(valDuurRaw) || 0;
 
                 // Bereken het verschil
                 let verschil = val0 - valInst;
@@ -1989,12 +2013,14 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 // Formateer de waarden zonder komma's/decimalen
                 if (input0.value !== "") input0.value = val0.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
                 if (inputInst.value !== "") inputInst.value = valInst.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
+                if (inputDuur && inputDuur.value !== "") inputDuur.value = valDuur.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
                 inputVerschil.value = verschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
 
                 // Optellen voor de totalen
                 som0 += val0;
                 somInst += valInst;
                 somVerschil += verschil;
+                somDuur += valDuur;
             });
 
             // Veilige update van de totalen onderaan op het scherm
@@ -2006,6 +2032,9 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
 
             const elTotaalVerschil = document.getElementById('totaal-verschil');
             if (elTotaalVerschil) elTotaalVerschil.innerText = somVerschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
+
+            const elTotaalDuur = document.getElementById('totaal-duur');
+            if (elTotaalDuur) elTotaalDuur.innerText = somDuur.toLocaleString('nl-NL', { maximumFractionDigits: 0 });
         }
 
         function voegPostToe(index) {
@@ -2795,24 +2824,28 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                 const verliespostenData = [];
                 let totaalMeting0 = 0;
                 let totaalMetingInst = 0;
+                let totaalMetingDuur = 0;
                 let totaalVerschil = 0;
 
                 document.querySelectorAll('.verliespost-row').forEach(rij => {
                     const postNaam = rij.getAttribute('data-post');
-                    const meting0 = rij.querySelector('.meting-0.value') || rij.querySelector('.meting-0').value || "0";
+                    const meting0 = rij.querySelector('.meting-0').value || "0";
                     const metingInst = rij.querySelector('.meting-inst').value || "0";
+                    const metingDuur = rij.querySelector('.meting-duur')?.value || "0";
                     const verschil = rij.querySelector('.meting-verschil').value || "0";
 
                     verliespostenData.push({
                         post: postNaam,
                         meting0: meting0,
                         metingInst: metingInst,
+                        metingDuur: metingDuur,
                         verschil: verschil
                     });
 
                     // Schoonmaken voor de optelling
                     totaalMeting0 += parseFloat(meting0.replace(/\./g, '')) || 0;
                     totaalMetingInst += parseFloat(metingInst.replace(/\./g, '')) || 0;
+                    totaalMetingDuur += parseFloat(metingDuur.replace(/\./g, '')) || 0;
                     totaalVerschil += parseFloat(verschil.replace(/\./g, '')) || 0;
                 });
 
@@ -2831,6 +2864,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                         });
                     }
                 });
+
                 const onderhoudsLijst = [];
 
                 document.querySelectorAll('.onderhoudspost-rij').forEach(rij => {
@@ -3220,6 +3254,7 @@ De grootste energetische winst wordt verwacht door een geïntegreerde renovatie 
                     verliesposten: verliespostenData,
                     totaalMeting0: totaalMeting0.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
                     totaalMetingInst: totaalMetingInst.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
+                    totaalMetingDuur: totaalMetingDuur.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
                     totaalVerschil: totaalVerschil.toLocaleString('nl-NL', { maximumFractionDigits: 0 }),
 
                     renovatiemaatregel: renovatieData,
